@@ -1,0 +1,36 @@
+{
+    "name": "smthgood-flutter-test",
+    "version": "1.0.0",
+    "description": "SMTGool app Appium test",
+    "scripts": {
+        "android": "wdio ./config/android.config.js",
+        "ios": "wdio ./config/ios.config.js",
+        "androidBrowser": "wdio ./config/androidBrowser.config.js",
+        "iosBrowser": "wdio ./config/iosBrowser.config.js",
+        "lint": "eslint .",
+        "wdio": "wdio run wdio.conf.js"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "@cucumber/cucumber": "^7.3.2",
+        "@wdio/cli": "^7.19.6",
+        "@wdio/cucumber-framework": "^7.19.5",
+        "@wdio/local-runner": "^7.19.5",
+        "@wdio/mocha-framework": "^7.19.5",
+        "@wdio/runner": "^7.19.5",
+        "@wdio/spec-reporter": "^7.19.1",
+        "@wdio/sync": "^7.19.5",
+        "allure-commandline": "^2.17.2",
+        "appium-webdriveragent": "^4.4.0",
+        "chromedriver": "^90.0.1",
+        "eslint": "^7.3.0",
+        "package.json": "^2.0.1",
+        "wdio-chromedriver-service": "^7.3.2",
+        "webdriverio": "^7.19.5"
+    },
+    "devDependencies": {
+        "@wdio/allure-reporter": "^7.19.7",
+        "@wdio/appium-service": "^7.19.5",
+        "chai": "^4.3.6"
+    }
+}
