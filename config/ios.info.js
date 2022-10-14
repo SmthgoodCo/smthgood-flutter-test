@@ -8,7 +8,7 @@ class IosInfo {
   }
 
   static appName() {
-    return "com.zimplistic.rotimaticmobile"; // pass the bundleid or ipa name
+    return "sg.vinova.smthgood.stg"; // pass the bundleid or ipa name
   }
 
   static udid() {
