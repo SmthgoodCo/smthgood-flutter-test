@@ -74,7 +74,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "silent",
+  logLevel: "info",
   //
   // Set specific log levels per logger
   // loggers:
@@ -121,6 +121,7 @@ exports.config = {
   },
   port: 4723,
   path: "/wd/hub",
+  // Framework you want
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
   // see also: https://webdriver.io/docs/frameworks
