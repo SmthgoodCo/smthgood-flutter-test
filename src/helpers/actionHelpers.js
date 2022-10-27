@@ -11,8 +11,8 @@ class ActionHelper {
     return browser.getTitle();
   }
 
-  static launchApp() {
-    driver.launchApp();
+  static async launchApp() {
+    await driver.launchApp();
   }
 
   static closeApp() {
@@ -24,24 +24,24 @@ class ActionHelper {
     driver.pressKeyCode(3);
   }
 
-  static switchToNativeContext() {
-    browser.switchContext("NATIVE_APP");
+  static async switchToNativeContext() {
+    await browser.switchContext("NATIVE_APP");
   }
 
-  static pause(seconds) {
-    browser.pause(seconds * 1000);
+  static async pause(seconds) {
+    await browser.pause(seconds * 1000);
   }
 
-  static isVisible(locator) {
-    return browser.$(locator).isDisplayed() ? true : false;
+  static async isVisible(locator) {
+    return await browser.$(locator).isDisplayed() ? true : false;
   }
 
-  static click(locator) {
-    browser.$(locator).click();
+  static async click(locator) {
+    await browser.$(locator).click();
   }
 
-  static waitForElement(locator) {
-    browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
+  static async waitForElement(locator) {
+    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
   }
 
   static waitForNotElement(locator) {
@@ -52,8 +52,8 @@ class ActionHelper {
     browser.$(locator).clearValue();
   }
 
-  static sendText(locator, inputText) {
-    browser.$(locator).addValue(inputText);
+  static async sendText(locator, inputText) {
+    await browser.$(locator).addValue(inputText);
   }
 
   static getText(locator) {

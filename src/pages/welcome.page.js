@@ -9,9 +9,9 @@ class WelcomePage extends BasePage {
     return require(`./../screens/native/${platform}/welcome.screen.js`);
   }
 
-  launchApp() {
-    ActionHelper.launchApp();
-    ActionHelper.switchToNativeContext();
+  async launchApp() {
+    await ActionHelper.launchApp();
+    await ActionHelper.switchToNativeContext();
   }
 
   launchAppiOS() {
@@ -19,9 +19,9 @@ class WelcomePage extends BasePage {
     ActionHelper.switchToNativeContext();
   }
 
-  verifyContinueButtonDisplay() {
+  clickContinueButton() {
     ActionHelper.waitForElement(this.getObjectLocator().continueButton);
-    ActionHelper.isVisible(this.getObjectLocator().continueButton).should.true;
+    ActionHelper.click(this.getObjectLocator().continueButton);
   }
 }
 

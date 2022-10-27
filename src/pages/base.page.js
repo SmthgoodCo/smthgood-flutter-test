@@ -7,7 +7,7 @@ class BasePage {
     return require(`./../screens/native/${platform}/base.screen.js`);
   }
 
-  dismissAllowAccessLocationDialgIfPresent() {
+  dismissDialogIfPresent() {
     try {
       ActionHelper.waitForElement(
         this.getSelector().permissionControllerButton
@@ -18,21 +18,10 @@ class BasePage {
     }
   }
 
-  allowAllowAccessLocationDialgIfPresent() {
-    try {
-      ActionHelper.waitForElement(
-        this.getSelector().permissionControllerButtonAllow
-      );
-      ActionHelper.click(this.getSelector().permissionControllerButtonAllow);
-    } catch (error) {
-      console.log("Dialog is not displayed !!!");
-    }
-  }
-
-  clickButtonOnScreen(text) {
+  async clickButtonOnScreen(text) {
     const el = this.getSelector().buttonOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.click(el);
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
   }
 
   verifyText(text) {
@@ -59,10 +48,18 @@ class BasePage {
     ActionHelper.isVisible(el).should.true;
   }
 
-  verifyButton(text) {
-    const el = this.getSelector().buttonOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
+  async verifyButtonDisplay() {
+    const el = this.getSelector().buttonOnScreen
+    await ActionHelper.waitForElement(el);
+    // return ActionHelper.isVisible(el).should.true;
+  }
+
+  async enterText(text) {
+    const el = this.getSelector().textField
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
+    await ActionHelper.sendText(el, text);
+    await ActionHelper.pause(5)
   }
 
   clickLinkOnMenu(text) {
