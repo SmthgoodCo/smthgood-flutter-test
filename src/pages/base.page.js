@@ -48,10 +48,10 @@ class BasePage {
     ActionHelper.isVisible(el).should.true;
   }
 
-  async verifyButtonDisplay() {
-    const el = this.getSelector().buttonOnScreen
+  async verifyButtonDisplay(text) {
+    const el = this.getSelector().buttonOnScreen.replace("%s", text);
     await ActionHelper.waitForElement(el);
-    // return ActionHelper.isVisible(el).should.true;
+    ActionHelper.isVisible(el).should.true;
   }
 
   async enterText(text) {
@@ -59,7 +59,7 @@ class BasePage {
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
     await ActionHelper.sendText(el, text);
-    await ActionHelper.pause(5)
+    await ActionHelper.pressKeyCode(66)
   }
 
   clickLinkOnMenu(text) {
@@ -76,10 +76,6 @@ class BasePage {
   verifyElement(locator) {
     ActionHelper.waitForElement(locator);
     ActionHelper.isVisible(locator).should.true;
-  }
-
-  pressEnterOnInput(locator) {
-    ActionHelper.pressEnterOnInput(locator);
   }
 
   swipeDown() {

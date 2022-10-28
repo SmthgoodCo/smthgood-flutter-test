@@ -32,8 +32,12 @@ class ActionHelper {
     await browser.pause(seconds * 1000);
   }
 
-  static async isVisible(locator) {
-    return await browser.$(locator).isDisplayed() ? true : false;
+  static isVisible(locator) {
+    return browser.$(locator).isDisplayed() ? true : false;
+  }
+
+  static async pressKeyCode(value) {
+    await driver.pressKeyCode(value);
   }
 
   static async click(locator) {

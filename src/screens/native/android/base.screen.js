@@ -1,6 +1,6 @@
 class BaseScreen {
   constructor() {
-    this.buttonOnScreen = '//android.widget.Button[@content-desc="CONTINUE"]';
+    this.buttonOnScreen = '//android.widget.Button[@content-desc="%s"]';
     this.textField = '//android.widget.EditText';
   }
 }

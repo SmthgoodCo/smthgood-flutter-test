@@ -12,9 +12,9 @@ Given("I launch and Open SmtGood iOS app", () => {
   welcomePage.launchAppiOS();
 });
 
-Then("I can see Button", async () => {
-  console.log(`I can see Button`);
-  await welcomePage.verifyButtonDisplay();
+Then("I can see {string} Button", async (text) => {
+  console.log(`I can see ${text} Button`);
+  await welcomePage.verifyButtonDisplay(text);
 });
 
 When("I click {string} Button", async (button) => {
