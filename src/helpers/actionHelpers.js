@@ -32,8 +32,8 @@ class ActionHelper {
     await browser.pause(seconds * 1000);
   }
 
-  static isVisible(locator) {
-    return browser.$(locator).isDisplayed() ? true : false;
+  static async isVisible(locator) {
+    return await browser.$(locator).isDisplayed() ? true : false;
   }
 
   static async pressKeyCode(value) {
@@ -42,6 +42,15 @@ class ActionHelper {
 
   static async click(locator) {
     await browser.$(locator).click();
+  }
+
+  static async checkLocatorExist(locator, action) {
+    try {
+      await this.waitForElement(locator)
+      await action
+    } catch (error) {
+      console.log("Locator is not displayed !!!");
+    }
   }
 
   static async waitForElement(locator) {

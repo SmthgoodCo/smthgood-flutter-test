@@ -16,6 +16,7 @@ config.capabilities = [
     deviceName: AndroidInfo.deviceName(),
     platformVersion: AndroidInfo.platFormVersion(),
     app: path.resolve(`./apps/android/${AndroidInfo.appName()}`),
+    avd: AndroidInfo.deviceName()
   },
 ];
 

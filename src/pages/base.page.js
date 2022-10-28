@@ -2,6 +2,7 @@ const ActionHelper = require("../helpers/actionHelpers");
 require("chai").should();
 
 class BasePage {
+
   getSelector() {
     const platform = browser.capabilities.platformName.toLowerCase();
     return require(`./../screens/native/${platform}/base.screen.js`);
@@ -24,34 +25,16 @@ class BasePage {
     await ActionHelper.click(el);
   }
 
-  verifyText(text) {
-    const el = this.getSelector().textOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
-  verifyTextWebView(text) {
-    let el = this.getSelector().textOnWebView.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
-  verifyTextNavigation(text) {
-    const el = this.getSelector().textOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
-  verifyBrowserText(text) {
-    const el = this.getSelector().textOnWebView.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
   async verifyButtonDisplay(text) {
     const el = this.getSelector().buttonOnScreen.replace("%s", text);
     await ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
+    (await ActionHelper.isVisible(el)).should.true;
+  }
+
+  async verifyLogoDisplay() {
+    const el = this.getSelector().logoImage
+    await ActionHelper.waitForElement(el);
+    (await ActionHelper.isVisible(el)).should.true;
   }
 
   async enterText(text) {
@@ -59,27 +42,12 @@ class BasePage {
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
     await ActionHelper.sendText(el, text);
-    await ActionHelper.pressKeyCode(66)
+    await ActionHelper.pressKeyCode(66);
   }
 
-  clickLinkOnMenu(text) {
-    const el = this.getSelector().textOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.click(el);
-  }
-
-  getMessage(text) {
-    ActionHelper.waitForElement(this.getSelector().messageOnScreen);
-    ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(text);
-  }
-
-  verifyElement(locator) {
-    ActionHelper.waitForElement(locator);
-    ActionHelper.isVisible(locator).should.true;
-  }
-
-  swipeDown() {
-    ActionHelper.swipeDown();
+  async getMessage(text) {
+    await ActionHelper.waitForElement(this.getSelector().messageOnScreen);
+    await ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(text);
   }
 }
 
