@@ -40,9 +40,7 @@ class BasePage {
   async enterText(text) {
     const el = this.getSelector().textField
     await ActionHelper.waitForElement(el);
-    await ActionHelper.click(el);
     await ActionHelper.sendText(el, text);
-    await ActionHelper.pressKeyCode(66);
   }
 
   async getMessage(text) {

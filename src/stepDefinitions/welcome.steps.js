@@ -17,12 +17,12 @@ Then("I can see {string} Button", async (text) => {
   await welcomePage.verifyButtonDisplay(text);
 });
 
-When("I click {string} Button", async (button) => {
+When("I click {string}", async (button) => {
   console.log(`I click ${button} Button`);
   await welcomePage.clickButtonOnScreen(button);
 });
 
-When("I enter {string}", async (text) => {
+Given("I enter {string}", async (text) => {
   console.log(`I enter ${text}`);
   await welcomePage.enterText(text);
 });

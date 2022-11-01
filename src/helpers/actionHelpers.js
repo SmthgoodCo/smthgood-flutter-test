@@ -57,8 +57,12 @@ class ActionHelper {
     await browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
   }
 
-  static waitForNotElement(locator) {
-    browser.$(locator).waitForDisplayed({ waitTimeInSeconds, reverse: true });
+  static async getAttributeValue(locator, attributeName) {
+    return await browser.$(locator).getAttribute(attributeName)
+  }
+
+  static async waitForNotElement(locator) {
+    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds, reverse: true });
   }
 
   static clearText(locator) {
@@ -66,7 +70,9 @@ class ActionHelper {
   }
 
   static async sendText(locator, inputText) {
+    await this.click(locator)
     await browser.$(locator).addValue(inputText);
+    await ActionHelper.pressKeyCode(66);
   }
 
   static getText(locator) {
@@ -136,12 +142,56 @@ class ActionHelper {
     driver.hideKeyboard();
   }
 
-  static swipeDown() {
-    browser.touchAction([
-      { action: "press", x: 250, y: 500 },
-      { action: "moveTo", x: 250, y: 4500 },
+  static async swipeDown() {
+    await browser.touchAction([
+      { action: "press", x: 500, y: 800 },
+      { action: "moveTo", x: 1000, y: 1000 },
       "release",
     ]);
+  }
+
+  static swipeVertical(navigation) {
+    const m = driver.getWindowSize();
+    const mb = 200;
+    const from = {};
+    const to = {};
+
+    switch (navigation) {
+      case 'up':
+        from.width = m.width / 2;
+        from.height = m.height - mb;
+        to.height = 500;
+        to.width = m.width / 2;
+        break;
+      default:
+        break;
+    }
+
+
+    driver.touchPerform([
+      {
+        action: 'press',
+        options: {
+          x: from["width"],
+          y: from["height"]
+        }
+      },
+      {
+        action: 'wait',
+        options: { ms: 1000 }
+      },
+      {
+        action: 'moveTo',
+        options: {
+          x: to["width"],
+          y: to["height"]
+        }
+      },
+      {
+        action: 'release',
+        options: {}
+      }
+    ])
   }
 }
 
