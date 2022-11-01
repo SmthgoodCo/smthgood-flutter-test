@@ -11,7 +11,7 @@ Feature: Welcome Screen
     When I click 'CONTINUE'
     When I enter 'Abcd123!@#'
     When I click 'SIGN IN'
-    When I click OK
+    # When I click OK
     Then I can see logo on dashboard
 
   @androidApp
@@ -23,6 +23,6 @@ Feature: Welcome Screen
     When I click add to cart
     When I click cart
     When I click 'CHECKOUT'
-# When I click Order Place
+    When I click Order Place
 
 

@@ -33,7 +33,7 @@ class ActionHelper {
   }
 
   static async isVisible(locator) {
-    return await browser.$(locator).isDisplayed() ? true : false;
+    return (await browser.$(locator).isDisplayed()) ? true : false;
   }
 
   static async pressKeyCode(value) {
@@ -46,8 +46,8 @@ class ActionHelper {
 
   static async checkLocatorExist(locator, action) {
     try {
-      await this.waitForElement(locator)
-      await action
+      await this.waitForElement(locator);
+      await action;
     } catch (error) {
       console.log("Locator is not displayed !!!");
     }
@@ -58,11 +58,13 @@ class ActionHelper {
   }
 
   static async getAttributeValue(locator, attributeName) {
-    return await browser.$(locator).getAttribute(attributeName)
+    return await browser.$(locator).getAttribute(attributeName);
   }
 
   static async waitForNotElement(locator) {
-    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds, reverse: true });
+    await browser
+      .$(locator)
+      .waitForDisplayed({ waitTimeInSeconds, reverse: true });
   }
 
   static clearText(locator) {
@@ -70,7 +72,7 @@ class ActionHelper {
   }
 
   static async sendText(locator, inputText) {
-    await this.click(locator)
+    await this.click(locator);
     await browser.$(locator).addValue(inputText);
     await ActionHelper.pressKeyCode(66);
   }
@@ -150,14 +152,15 @@ class ActionHelper {
     ]);
   }
 
-  static swipeVertical(navigation) {
-    const m = driver.getWindowSize();
+  static async swipeVertical(navigation) {
+    const m = await driver.getWindowSize();
+    console.log(m);
     const mb = 200;
     const from = {};
     const to = {};
 
     switch (navigation) {
-      case 'up':
+      case "up":
         from.width = m.width / 2;
         from.height = m.height - mb;
         to.height = 500;
@@ -167,31 +170,30 @@ class ActionHelper {
         break;
     }
 
-
     driver.touchPerform([
       {
-        action: 'press',
+        action: "press",
         options: {
           x: from["width"],
-          y: from["height"]
-        }
+          y: from["height"],
+        },
       },
       {
-        action: 'wait',
-        options: { ms: 1000 }
+        action: "wait",
+        options: { ms: 1000 },
       },
       {
-        action: 'moveTo',
+        action: "moveTo",
         options: {
           x: to["width"],
-          y: to["height"]
-        }
+          y: to["height"],
+        },
       },
       {
-        action: 'release',
-        options: {}
-      }
-    ])
+        action: "release",
+        options: {},
+      },
+    ]);
   }
 }
 
