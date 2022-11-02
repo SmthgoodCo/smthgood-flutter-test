@@ -1,0 +1,30 @@
+name: Appium CI
+on:
+  workflow_dispatch:
+    inputs:
+      testBranch:
+        description: "Which branch to checkout and run test"
+        required: false
+        default: master
+
+jobs:
+  appium-run:
+    runs-on: ubuntu-latest
+    name: Appium Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Install and Run Appium Server
+        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
+        
+      - name: Cypress install
+        uses: cypress-io/github-action@v4
+        with:
+          runTests: false
+          
+      - name: Run Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          command: npm run android:browserStack
