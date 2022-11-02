@@ -10,6 +10,7 @@
         "lint": "eslint .",
         "wdio": "wdio run wdio.conf.js",
         "android:browserStack": "wdio ./config/browserStack.conf.js"
+
     },
     "license": "ISC",
     "dependencies": {
