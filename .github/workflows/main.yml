@@ -22,13 +22,11 @@ jobs:
       - name: Install and Run Appium Server
         run: chmod +x ./RunAppiumServer.sh
         
-      - name: Cypress install
-        uses: cypress-io/github-action@v4
+      - name: Dependencies install
         with:
-          runTests: false
+          command: npm i
           
       - name: Run Tests
-        uses: cypress-io/github-action@v2
         with:
           install: false
           command: npm run android:browserStack
