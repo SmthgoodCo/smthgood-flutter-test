@@ -23,10 +23,7 @@ jobs:
         run: chmod +x ./RunAppiumServer.sh
         
       - name: Dependencies install
-        with:
-          command: npm i
+        run: npm i
           
       - name: Run Tests
-        with:
-          install: false
-          command: npm run android:browserStack
+        run: npm run android:browserStack
