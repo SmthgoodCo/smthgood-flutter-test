@@ -8,7 +8,9 @@
         "androidBrowser": "wdio ./config/androidBrowser.config.js",
         "iosBrowser": "wdio ./config/iosBrowser.config.js",
         "lint": "eslint .",
-        "wdio": "wdio run wdio.conf.js"
+        "wdio": "wdio run wdio.conf.js",
+        "android:browserStack": "wdio ./config/browserStack.conf.js"
+
     },
     "license": "ISC",
     "dependencies": {
