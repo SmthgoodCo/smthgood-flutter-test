@@ -24,6 +24,7 @@
         "@wdio/sync": "^7.19.5",
         "allure-commandline": "^2.17.2",
         "appium-webdriveragent": "^4.4.0",
+        "browserstack-local": "^1.5.1",
         "chromedriver": "^90.0.1",
         "eslint": "^7.3.0",
         "package.json": "^2.0.1",
@@ -33,6 +34,7 @@
     "devDependencies": {
         "@wdio/allure-reporter": "^7.19.7",
         "@wdio/appium-service": "^7.19.5",
+        "@wdio/browserstack-service": "^7.25.2",
         "chai": "^4.3.6"
     }
 }

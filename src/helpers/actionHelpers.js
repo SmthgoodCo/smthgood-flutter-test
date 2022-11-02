@@ -11,8 +11,8 @@ class ActionHelper {
     return browser.getTitle();
   }
 
-  static launchApp() {
-    driver.launchApp();
+  static async launchApp() {
+    await driver.launchApp();
   }
 
   static closeApp() {
@@ -24,36 +24,57 @@ class ActionHelper {
     driver.pressKeyCode(3);
   }
 
-  static switchToNativeContext() {
-    browser.switchContext("NATIVE_APP");
+  static async switchToNativeContext() {
+    await browser.switchContext("NATIVE_APP");
   }
 
-  static pause(seconds) {
-    browser.pause(seconds * 1000);
+  static async pause(seconds) {
+    await browser.pause(seconds * 1000);
   }
 
-  static isVisible(locator) {
-    return browser.$(locator).isDisplayed() ? true : false;
+  static async isVisible(locator) {
+    return (await browser.$(locator).isDisplayed()) ? true : false;
   }
 
-  static click(locator) {
-    browser.$(locator).click();
+  static async pressKeyCode(value) {
+    await driver.pressKeyCode(value);
   }
 
-  static waitForElement(locator) {
-    browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
+  static async click(locator) {
+    await browser.$(locator).click();
   }
 
-  static waitForNotElement(locator) {
-    browser.$(locator).waitForDisplayed({ waitTimeInSeconds, reverse: true });
+  static async checkLocatorExist(locator, action) {
+    try {
+      await this.waitForElement(locator);
+      await action;
+    } catch (error) {
+      console.log("Locator is not displayed !!!");
+    }
+  }
+
+  static async waitForElement(locator) {
+    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
+  }
+
+  static async getAttributeValue(locator, attributeName) {
+    return await browser.$(locator).getAttribute(attributeName);
+  }
+
+  static async waitForNotElement(locator) {
+    await browser
+      .$(locator)
+      .waitForDisplayed({ waitTimeInSeconds, reverse: true });
   }
 
   static clearText(locator) {
     browser.$(locator).clearValue();
   }
 
-  static sendText(locator, inputText) {
-    browser.$(locator).addValue(inputText);
+  static async sendText(locator, inputText) {
+    await this.click(locator);
+    await browser.$(locator).addValue(inputText);
+    await ActionHelper.pressKeyCode(66);
   }
 
   static getText(locator) {
@@ -123,11 +144,55 @@ class ActionHelper {
     driver.hideKeyboard();
   }
 
-  static swipeDown() {
-    browser.touchAction([
-      { action: "press", x: 250, y: 500 },
-      { action: "moveTo", x: 250, y: 4500 },
+  static async swipeDown() {
+    await browser.touchAction([
+      { action: "press", x: 1000, y: 800 },
+      { action: "moveTo", x: 1000, y: 1000 },
       "release",
+    ]);
+  }
+
+  static async swipeVertical(navigation) {
+    const m = await driver.getWindowSize();
+    console.log(m);
+    const mb = 100;
+    const from = {};
+    const to = {};
+
+    switch (navigation) {
+      case "up":
+        from.width = m.width / 2;
+        from.height = m.height - mb;
+        to.height = 500;
+        to.width = m.width / 2;
+        break;
+      default:
+        break;
+    }
+
+    driver.touchPerform([
+      {
+        action: "press",
+        options: {
+          x: from["width"],
+          y: from["height"],
+        },
+      },
+      {
+        action: "wait",
+        options: { ms: 1000 },
+      },
+      {
+        action: "moveTo",
+        options: {
+          x: to["width"],
+          y: to["height"],
+        },
+      },
+      {
+        action: "release",
+        options: {},
+      },
     ]);
   }
 }

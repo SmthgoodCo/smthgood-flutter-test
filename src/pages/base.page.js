@@ -2,12 +2,13 @@ const ActionHelper = require("../helpers/actionHelpers");
 require("chai").should();
 
 class BasePage {
+
   getSelector() {
     const platform = browser.capabilities.platformName.toLowerCase();
     return require(`./../screens/native/${platform}/base.screen.js`);
   }
 
-  dismissAllowAccessLocationDialgIfPresent() {
+  dismissDialogIfPresent() {
     try {
       ActionHelper.waitForElement(
         this.getSelector().permissionControllerButton
@@ -18,75 +19,33 @@ class BasePage {
     }
   }
 
-  allowAllowAccessLocationDialgIfPresent() {
-    try {
-      ActionHelper.waitForElement(
-        this.getSelector().permissionControllerButtonAllow
-      );
-      ActionHelper.click(this.getSelector().permissionControllerButtonAllow);
-    } catch (error) {
-      console.log("Dialog is not displayed !!!");
-    }
+  async clickButtonOnScreen(text) {
+    const el = await this.getSelector().buttonOnScreen.replace("%s", text);
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
   }
 
-  clickButtonOnScreen(text) {
-    const el = this.getSelector().buttonOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.click(el);
+  async verifyButtonDisplay(text) {
+    const el = await this.getSelector().buttonOnScreen.replace("%s", text);
+    await ActionHelper.waitForElement(el);
+    (await ActionHelper.isVisible(el)).should.true;
   }
 
-  verifyText(text) {
-    const el = this.getSelector().textOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
+  async verifySectionOnDashboard(section) {
+    const el = await this.getObjectLocator().sectionOnDashboard.replace('%s', section)
+    await ActionHelper.waitForElement(el);
+    (await ActionHelper.isVisible(el)).should.true;
   }
 
-  verifyTextWebView(text) {
-    let el = this.getSelector().textOnWebView.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
+  async enterText(text) {
+    const el = await this.getSelector().textField
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.sendText(el, text);
   }
 
-  verifyTextNavigation(text) {
-    const el = this.getSelector().textOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
-  verifyBrowserText(text) {
-    const el = this.getSelector().textOnWebView.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
-  verifyButton(text) {
-    const el = this.getSelector().buttonOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.isVisible(el).should.true;
-  }
-
-  clickLinkOnMenu(text) {
-    const el = this.getSelector().textOnScreen.replace("%s", text);
-    ActionHelper.waitForElement(el);
-    ActionHelper.click(el);
-  }
-
-  getMessage(text) {
-    ActionHelper.waitForElement(this.getSelector().messageOnScreen);
-    ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(text);
-  }
-
-  verifyElement(locator) {
-    ActionHelper.waitForElement(locator);
-    ActionHelper.isVisible(locator).should.true;
-  }
-
-  pressEnterOnInput(locator) {
-    ActionHelper.pressEnterOnInput(locator);
-  }
-
-  swipeDown() {
-    ActionHelper.swipeDown();
+  async getMessage(text) {
+    await ActionHelper.waitForElement(this.getSelector().messageOnScreen);
+    await ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(text);
   }
 }
 
