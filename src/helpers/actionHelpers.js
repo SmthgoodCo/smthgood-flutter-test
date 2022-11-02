@@ -146,7 +146,7 @@ class ActionHelper {
 
   static async swipeDown() {
     await browser.touchAction([
-      { action: "press", x: 500, y: 800 },
+      { action: "press", x: 1000, y: 800 },
       { action: "moveTo", x: 1000, y: 1000 },
       "release",
     ]);
@@ -155,7 +155,7 @@ class ActionHelper {
   static async swipeVertical(navigation) {
     const m = await driver.getWindowSize();
     console.log(m);
-    const mb = 200;
+    const mb = 100;
     const from = {};
     const to = {};
 

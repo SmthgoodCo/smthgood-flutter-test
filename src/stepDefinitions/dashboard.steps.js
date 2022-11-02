@@ -7,9 +7,9 @@ When("I click skip tutorial", async () => {
   await dashboard.clickSkipTutorial();
 });
 
-Then("I can see logo on dashboard", async () => {
-  console.log(`I can see logo on dashboard`);
-  await dashboard.verifyLogoDisplay();
+Then("I can see {string} section on dashboard", async (section) => {
+  console.log(`I can see ${section} section on dashboard`);
+  await dashboard.verifySectionOnDashboard(section);
 });
 
 Given("I select {string} on dashboard", async (section) => {
@@ -32,12 +32,22 @@ When("I select {string}", async (product) => {
   await dashboard.selectProduct(product);
 });
 
+Then("I can see {string} information", async (product) => {
+  console.log(`I can see ${product} information`);
+  await dashboard.verifyProductInformation(product);
+});
+
+Then("I can see {string} added in cart", async (product) => {
+  console.log(`I can see ${product} added in cart"`);
+  await dashboard.verifyProductInformation(product);
+});
+
 When("I click cart", async () => {
   console.log(`I click cart`);
   await dashboard.clickCart();
 });
 
-When("I click add to cart", async () => {
+Given("I click add to cart", async () => {
   console.log(`I click add to Cart`);
   await dashboard.clickAddToCart();
 });
@@ -47,9 +57,19 @@ When("I click Order Place", async () => {
   await dashboard.clickOrderPlace();
 });
 
-When("I remove all product in cart", async () => {
+Then("I can see oder is placed Message", async () => {
+  console.log(`I can see oder is placed Message`);
+  await dashboard.orderIsPlacedMessage();
+});
+
+Given("I remove all product in cart", async () => {
   console.log(`I remove all product in cart`);
   await dashboard.removeProductInCart();
+});
+
+Then("I should not see the product in cart", async () => {
+  console.log(`I should not see the product in cart`);
+  await dashboard.verifyProductDisplayed();
 });
 
 

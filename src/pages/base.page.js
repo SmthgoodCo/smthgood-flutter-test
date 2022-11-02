@@ -20,25 +20,25 @@ class BasePage {
   }
 
   async clickButtonOnScreen(text) {
-    const el = this.getSelector().buttonOnScreen.replace("%s", text);
+    const el = await this.getSelector().buttonOnScreen.replace("%s", text);
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
   }
 
   async verifyButtonDisplay(text) {
-    const el = this.getSelector().buttonOnScreen.replace("%s", text);
+    const el = await this.getSelector().buttonOnScreen.replace("%s", text);
     await ActionHelper.waitForElement(el);
     (await ActionHelper.isVisible(el)).should.true;
   }
 
-  async verifyLogoDisplay() {
-    const el = this.getSelector().logoImage
+  async verifySectionOnDashboard(section) {
+    const el = await this.getObjectLocator().sectionOnDashboard.replace('%s', section)
     await ActionHelper.waitForElement(el);
     (await ActionHelper.isVisible(el)).should.true;
   }
 
   async enterText(text) {
-    const el = this.getSelector().textField
+    const el = await this.getSelector().textField
     await ActionHelper.waitForElement(el);
     await ActionHelper.sendText(el, text);
   }
