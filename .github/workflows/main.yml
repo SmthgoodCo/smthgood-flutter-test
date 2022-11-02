@@ -20,7 +20,7 @@ jobs:
           java-version: 1.8
         
       - name: Install and Run Appium Server
-        run: chmod +x ./scripts/RunAppiumServer.sh
+        run: chmod +x ./RunAppiumServer.sh
         
       - name: Cypress install
         uses: cypress-io/github-action@v4
