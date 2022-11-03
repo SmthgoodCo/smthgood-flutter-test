@@ -22,7 +22,7 @@ When("I click {string}", async (button) => {
   await welcomePage.clickButtonOnScreen(button);
 });
 
-Given("I enter {string}", async (text) => {
+When("I enter {string}", async (text) => {
   console.log(`I enter ${text}`);
   await welcomePage.enterText(text);
 });

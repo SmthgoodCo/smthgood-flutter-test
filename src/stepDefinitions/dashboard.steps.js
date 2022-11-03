@@ -12,7 +12,7 @@ Then("I can see {string} section on dashboard", async (section) => {
   await dashboard.verifySectionOnDashboard(section);
 });
 
-Given("I select {string} on dashboard", async (section) => {
+When("I select {string} on dashboard", async (section) => {
   console.log(`I select ${section}`);
   await dashboard.selectSection(section);
 });
