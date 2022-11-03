@@ -16,7 +16,7 @@ exports.config = {
       os_version: "12.0",
       app:
         process.env.BROWSERSTACK_APP_ID ||
-        "bs://76684b14bf7dba653ff709df2703f9c2342275c8",
+        "bs://4b41df594a263a3b6e7af12bbfd560128ccc4bdf",
       "browserstack.debug": true,
     },
   ],

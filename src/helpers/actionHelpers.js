@@ -55,6 +55,7 @@ class ActionHelper {
   }
 
   static async waitForElement(locator) {
+    this.pause(2);
     await browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
   }
 
