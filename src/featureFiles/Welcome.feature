@@ -13,28 +13,28 @@ Feature: Welcome Screen
     When I click 'SIGN IN'
     Then I can see 'JUST FOR YOU' section on dashboard
 
-  @androidApp
-  Scenario: Remove product in cart
-    Given I remove all product in cart
-    Then I should not see the product in cart
+# @androidApp
+# Scenario: Remove product in cart
+#   Given I remove all product in cart
+#   Then I should not see the product in cart
 
-  @androidApp
-  Scenario: Select a product
-    Given I select 'JUST FOR YOU' on dashboard
-    When I search 'Ao dai'
-    When I select 'Ao dai'
-    Then I can see 'Ao dai' information
+# @androidApp
+# Scenario: Select a product
+#   Given I select 'JUST FOR YOU' on dashboard
+#   When I search 'Ao dai'
+#   When I select 'Ao dai'
+#   Then I can see 'Ao dai' information
 
-  @androidApp
-  Scenario: Click add to cart button
-    Given I click add to cart
-    When I click cart
-    Then I can see 'Ao dai' added in cart
+# @androidApp
+# Scenario: Click add to cart button
+#   Given I click add to cart
+#   When I click cart
+#   Then I can see 'Ao dai' added in cart
 
-  @androidApp
-  Scenario: Click checkout button
-    Given I click 'CHECKOUT'
-    When I click Order Place
-    Then I can see oder is placed Message
+# @androidApp
+# Scenario: Click checkout button
+#   Given I click 'CHECKOUT'
+#   When I click Order Place
+#   Then I can see oder is placed Message
 
 
