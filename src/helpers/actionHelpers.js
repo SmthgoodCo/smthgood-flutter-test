@@ -42,6 +42,7 @@ class ActionHelper {
 
   static async click(locator) {
     await browser.$(locator).click();
+    await this.pause(0.5)
   }
 
   static async checkLocatorExist(locator, action) {

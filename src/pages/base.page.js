@@ -47,6 +47,13 @@ class BasePage {
     await ActionHelper.waitForElement(this.getSelector().messageOnScreen);
     await ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(text);
   }
+
+  async clickCart() {
+    const el = await this.getSelector().cartIcon
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
+    await ActionHelper.pause(6)
+  }
 }
 
 module.exports = BasePage;

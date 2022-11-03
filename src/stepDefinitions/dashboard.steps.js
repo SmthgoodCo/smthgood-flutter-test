@@ -37,39 +37,12 @@ Then("I can see {string} information", async (product) => {
   await dashboard.verifyProductInformation(product);
 });
 
-Then("I can see {string} added in cart", async (product) => {
-  console.log(`I can see ${product} added in cart"`);
-  await dashboard.verifyProductInformation(product);
+Then("I can see product added in cart", async () => {
+  console.log(`I can see product added in cart"`);
+  await dashboard.verifyButtonDisplay('CHECKOUT');
 });
 
 When("I click cart", async () => {
   console.log(`I click cart`);
   await dashboard.clickCart();
 });
-
-Given("I click add to cart", async () => {
-  console.log(`I click add to Cart`);
-  await dashboard.clickAddToCart();
-});
-
-When("I click Order Place", async () => {
-  console.log(`I click Order Place`);
-  await dashboard.clickOrderPlace();
-});
-
-Then("I can see oder is placed Message", async () => {
-  console.log(`I can see oder is placed Message`);
-  await dashboard.orderIsPlacedMessage();
-});
-
-Given("I remove all product in cart", async () => {
-  console.log(`I remove all product in cart`);
-  await dashboard.removeProductInCart();
-});
-
-Then("I should not see the product in cart", async () => {
-  console.log(`I should not see the product in cart`);
-  await dashboard.verifyProductDisplayed();
-});
-
-

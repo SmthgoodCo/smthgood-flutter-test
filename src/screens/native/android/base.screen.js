@@ -4,6 +4,7 @@ class BaseScreen {
     this.logoImage = '//android.widget.ImageView[@index="1"]';
     this.textField = '//android.widget.EditText';
     this.titleOnScreen = '//android.view.View[@content-desc="%s"]'
+    this.cartIcon = '(//android.widget.ImageView)[3]';
   }
 }
 

@@ -17,24 +17,25 @@ Feature: Welcome Screen
   Scenario: Remove product in cart
     Given I remove all product in cart
     Then I should not see the product in cart
+    When I click Back
 
   @androidApp
   Scenario: Select a product
     Given I select 'JUST FOR YOU' on dashboard
-    When I search 'Ao dai'
-    When I select 'Ao dai'
-    Then I can see 'Ao dai' information
+    When I search "Women's winter coat"
+    When I select "Women's winter coat"
+    Then I can see "Women's winter coat" information
 
   @androidApp
   Scenario: Click add to cart button
     Given I click add to cart
     When I click cart
-    Then I can see 'Ao dai' added in cart
+    Then I can see product added in cart
 
   @androidApp
   Scenario: Click checkout button
     Given I click 'CHECKOUT'
     When I click Order Place
-    Then I can see oder is placed Message
+    Then I can see 'Look out for the order confirmation in your email. You can also check on your order status anytime here in the app.' message
 
 
