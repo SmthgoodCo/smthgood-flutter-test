@@ -42,7 +42,7 @@ class ActionHelper {
 
   static async click(locator) {
     await browser.$(locator).click();
-    await this.pause(0.5)
+    await this.pause(0.5);
   }
 
   static async checkLocatorExist(locator, action) {
@@ -76,6 +76,7 @@ class ActionHelper {
   static async sendText(locator, inputText) {
     await this.click(locator);
     await browser.$(locator).addValue(inputText);
+    await this.pause(2);
     await ActionHelper.pressKeyCode(66);
   }
 
