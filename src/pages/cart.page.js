@@ -48,7 +48,7 @@ class CartPage extends BasePage {
     await ActionHelper.waitForNotElement(
       await this.getObjectLocator().placeOderButton
     );
-    await ActionHelper.pause(5);
+    await ActionHelper.pause(10);
   }
 
   async orderIsPlacedMessage(text) {
