@@ -30,12 +30,6 @@ class CartPage extends BasePage {
     await ActionHelper.click(el)
   }
 
-  async clickBack() {
-    const el = await this.getObjectLocator().backButton
-    await ActionHelper.waitForElement(el)
-    await ActionHelper.click(el)
-  }
-
   async clickOrderPlace() {
     const el = await this.getObjectLocator().placeOderButton
     await ActionHelper.waitForNotElement(await this.getSelector().buttonOnScreen.replace('%s', 'CHECKOUT'))
@@ -46,7 +40,7 @@ class CartPage extends BasePage {
   }
 
   async orderIsPlacedMessage(text) {
-    const el = await this.getObjectLocator().oderPlacedMsg.replace('%s', text);
+    const el = await this.getSelector().textOnScreen.replace('%s', text);
     await ActionHelper.waitForElement(el);
     await this.verifyButtonDisplay('CONTINUE SHOPPING')
   }

@@ -1,202 +1,203 @@
-const { default: $ } = require("webdriverio/build/commands/browser/$");
-const { signInButton } = require("../screens/native/ios/welcome.screen");
+const { default: $ } = require('webdriverio/build/commands/browser/$')
+const { signInButton } = require('../screens/native/ios/welcome.screen')
 
-const waitTimeInSeconds = 60000;
+const waitTimeInSeconds = 60000
 class ActionHelper {
   static launchBrowserUrl(urlToLaunch) {
-    browser.url(urlToLaunch);
+    browser.url(urlToLaunch)
   }
 
   static getTitle() {
-    return browser.getTitle();
+    return browser.getTitle()
   }
 
   static async launchApp() {
-    await driver.launchApp();
+    await driver.launchApp()
   }
 
   static closeApp() {
-    driver.closeApp();
+    driver.closeApp()
   }
 
   static backgroundApp() {
-    // driver.background(20);
-    driver.pressKeyCode(3);
+    // driver.background(20)
+    driver.pressKeyCode(3)
   }
 
   static async switchToNativeContext() {
-    await browser.switchContext("NATIVE_APP");
+    await browser.switchContext('NATIVE_APP')
   }
 
   static async pause(seconds) {
-    await browser.pause(seconds * 1000);
+    await browser.pause(seconds * 1000)
   }
 
   static async isVisible(locator) {
-    return (await browser.$(locator).isDisplayed()) ? true : false;
+    return (await browser.$(locator).isDisplayed()) ? true : false
   }
 
   static async pressKeyCode(value) {
-    await driver.pressKeyCode(value);
+    await driver.pressKeyCode(value)
   }
 
   static async click(locator) {
-    await browser.$(locator).click();
+    await browser.$(locator).click()
     await this.pause(0.5)
   }
 
   static async checkLocatorExist(locator, action) {
     try {
-      await this.waitForElement(locator);
-      await action;
+      await this.waitForElement(locator)
+      await action
     } catch (error) {
-      console.log("Locator is not displayed !!!");
+      console.log('Locator is not displayed !!!')
     }
   }
 
   static async waitForElement(locator) {
-    this.pause(2);
-    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds });
+    this.pause(2)
+    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds })
   }
 
   static async getAttributeValue(locator, attributeName) {
-    return await browser.$(locator).getAttribute(attributeName);
+    return await browser.$(locator).getAttribute(attributeName)
   }
 
   static async waitForNotElement(locator) {
     await browser
       .$(locator)
-      .waitForDisplayed({ waitTimeInSeconds, reverse: true });
+      .waitForDisplayed({ waitTimeInSeconds, reverse: true })
   }
 
-  static clearText(locator) {
-    browser.$(locator).clearValue();
+  static async clearText(locator) {
+    await browser.$(locator).clearValue()
   }
 
   static async sendText(locator, inputText) {
-    await this.click(locator);
-    await browser.$(locator).addValue(inputText);
-    await ActionHelper.pressKeyCode(66);
+    await this.click(locator)
+    await this.clearText(locator)
+    await browser.$(locator).addValue(inputText)
+    await ActionHelper.pressKeyCode(66)
   }
 
-  static getText(locator) {
-    return browser.$(locator).getText();
+  static async getText(locator) {
+    return await browser.$(locator).getText()
   }
 
   static async scrollRecipe() {
-    let scrollX = driver.getWindowRect().width;
-    let scrollY = driver.getWindowRect().height * 0.3;
+    let scrollX = driver.getWindowRect().width
+    let scrollY = driver.getWindowRect().height * 0.3
     await browser.touchAction([
-      { action: "press", x: 0, y: scrollY },
-      { action: "moveTo", x: -3600, y: scrollY },
-      "release",
-    ]);
+      { action: 'press', x: 0, y: scrollY },
+      { action: 'moveTo', x: -3600, y: scrollY },
+      'release',
+    ])
   }
 
   static async scrollVideo() {
-    let scrollX = driver.getWindowRect().width;
-    let scrollY = driver.getWindowRect().height * 0.85;
+    let scrollX = driver.getWindowRect().width
+    let scrollY = driver.getWindowRect().height * 0.85
     await browser.touchAction([
-      { action: "press", x: 0, y: scrollY },
-      { action: "moveTo", x: -3600, y: scrollY },
-      "release",
-    ]);
+      { action: 'press', x: 0, y: scrollY },
+      { action: 'moveTo', x: -3600, y: scrollY },
+      'release',
+    ])
   }
 
   static async touchTopleft() {
-    await browser.touchAction([{ action: "press", x: 100, y: 100 }, "release"]);
+    await browser.touchAction([{ action: 'press', x: 100, y: 100 }, 'release'])
   }
 
   static async getDeviceSize() {
-    return await driver.getWindowSize();
+    return await driver.getWindowSize()
   }
 
   static async touchTopleftXBtn() {
-    // console.log(await this.getDeviceSize());
-    this.pause(1);
-    browser.touchAction([{ action: "press", x: 50, y: 50 }, "release"]);
+    // console.log(await this.getDeviceSize())
+    this.pause(1)
+    browser.touchAction([{ action: 'press', x: 50, y: 50 }, 'release'])
   }
 
   static async touchTopRight() {
-    console.log(await this.getDeviceSize());
-    ActionHelper.pause(1);
+    console.log(await this.getDeviceSize())
+    ActionHelper.pause(1)
     await browser.touchAction([
       {
-        action: "press",
+        action: 'press',
         x: 1000,
         y: 100,
       },
-      "release",
-    ]);
+      'release',
+    ])
   }
 
   static getPageSource() {
-    return driver.getPageSource();
+    return driver.getPageSource()
   }
 
   static openChrome() {
-    browser.$("//android.widget.TextView[@content-desc='Chrome']").click();
+    browser.$('//android.widget.TextView[@content-desc="Chrome"]').click()
   }
 
   static openSafari() {
-    browser.$('//XCUIElementTypeIcon[@name="Safari"]').click();
+    browser.$('//XCUIElementTypeIcon[@name="Safari"]').click()
   }
 
   static hideKeyboard() {
-    driver.hideKeyboard();
+    driver.hideKeyboard()
   }
 
   static async swipeDown() {
     await browser.touchAction([
-      { action: "press", x: 1000, y: 800 },
-      { action: "moveTo", x: 1000, y: 1000 },
-      "release",
-    ]);
+      { action: 'press', x: 1000, y: 800 },
+      { action: 'moveTo', x: 1000, y: 1000 },
+      'release',
+    ])
   }
 
   static async swipeVertical(navigation) {
-    const m = await driver.getWindowSize();
-    console.log(m);
-    const mb = 100;
-    const from = {};
-    const to = {};
+    const m = await driver.getWindowSize()
+    console.log(m)
+    const mb = 100
+    const from = {}
+    const to = {}
 
     switch (navigation) {
-      case "up":
-        from.width = m.width / 2;
-        from.height = m.height - mb;
-        to.height = 500;
-        to.width = m.width / 2;
-        break;
+      case 'up':
+        from.width = m.width / 2
+        from.height = m.height - mb
+        to.height = 500
+        to.width = m.width / 2
+        break
       default:
-        break;
+        break
     }
 
     driver.touchPerform([
       {
-        action: "press",
+        action: 'press',
         options: {
-          x: from["width"],
-          y: from["height"],
+          x: from['width'],
+          y: from['height'],
         },
       },
       {
-        action: "wait",
+        action: 'wait',
         options: { ms: 1000 },
       },
       {
-        action: "moveTo",
+        action: 'moveTo',
         options: {
-          x: to["width"],
-          y: to["height"],
+          x: to['width'],
+          y: to['height'],
         },
       },
       {
-        action: "release",
+        action: 'release',
         options: {},
       },
-    ]);
+    ])
   }
 }
 
-module.exports = ActionHelper;
+module.exports = ActionHelper

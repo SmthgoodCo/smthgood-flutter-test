@@ -33,18 +33,17 @@ class DashboardPage extends BasePage {
   async searchProduct(text) {
     const el = await this.getObjectLocator().searchProductField
     await ActionHelper.waitForElement(el)
-    await ActionHelper.sendText(el, text);
+    await ActionHelper.sendText(el, text)
   }
 
   async selectProduct(text) {
     const el = await this.getObjectLocator().productName.replace('%s', text)
     await ActionHelper.waitForElement(el)
-    await ActionHelper.click(el);
-    await ActionHelper.pause(3)
+    await ActionHelper.click(el)
   }
 
   async verifyProductInformation(product) {
-    const el = await this.getObjectLocator().productInformation.replace('%s', product)
+    const el = await this.getSelector().textOnScreen.replace('%s', product)
     await ActionHelper.waitForElement(el)
   }
 }
