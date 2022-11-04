@@ -2,7 +2,6 @@ const ActionHelper = require("../helpers/actionHelpers");
 require("chai").should();
 
 class BasePage {
-
   getSelector() {
     const platform = browser.capabilities.platformName.toLowerCase();
     return require(`./../screens/native/${platform}/base.screen.js`);
@@ -23,6 +22,7 @@ class BasePage {
     const el = await this.getSelector().buttonOnScreen.replace("%s", text);
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
+    await ActionHelper.pause(2);
   }
 
   async verifyButtonDisplay(text) {
@@ -32,27 +32,32 @@ class BasePage {
   }
 
   async verifySectionOnDashboard(section) {
-    const el = await this.getObjectLocator().sectionOnDashboard.replace('%s', section)
+    const el = await this.getObjectLocator().sectionOnDashboard.replace(
+      "%s",
+      section
+    );
     await ActionHelper.waitForElement(el);
     (await ActionHelper.isVisible(el)).should.true;
   }
 
   async enterText(text) {
-    const el = await this.getSelector().textField
+    const el = await this.getSelector().textField;
     await ActionHelper.waitForElement(el);
     await ActionHelper.sendText(el, text);
   }
 
   async getMessage(text) {
     await ActionHelper.waitForElement(this.getSelector().messageOnScreen);
-    await ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(text);
+    await ActionHelper.getText(this.getSelector().messageOnScreen).should.equal(
+      text
+    );
   }
 
   async clickCart() {
-    const el = await this.getSelector().cartIcon
-    await ActionHelper.waitForElement(el)
-    await ActionHelper.click(el)
-    await ActionHelper.pause(6)
+    const el = await this.getSelector().cartIcon;
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
+    await ActionHelper.pause(6);
   }
 }
 

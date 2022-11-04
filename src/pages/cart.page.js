@@ -42,6 +42,7 @@ class CartPage extends BasePage {
       await this.getSelector().buttonOnScreen.replace("%s", "CHECKOUT")
     );
     await ActionHelper.swipeVertical("up");
+    await ActionHelper.pause(6);
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
     await ActionHelper.waitForNotElement(
