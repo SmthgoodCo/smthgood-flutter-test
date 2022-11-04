@@ -173,6 +173,8 @@ class ActionHelper {
         break;
     }
 
+    await this.pause(2);
+
     driver.touchPerform([
       {
         action: "press",
@@ -197,6 +199,8 @@ class ActionHelper {
         options: {},
       },
     ]);
+
+    await this.pause(5);
   }
 }
 
