@@ -45,9 +45,9 @@ class CartPage extends BasePage {
     await ActionHelper.pause(6);
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
-    await ActionHelper.waitForNotElement(
-      await this.getObjectLocator().placeOderButton
-    );
+    // await ActionHelper.waitForNotElement(
+    //   await this.getObjectLocator().placeOderButton
+    // );
     await ActionHelper.pause(10);
   }
 
