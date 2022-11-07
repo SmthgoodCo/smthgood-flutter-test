@@ -198,6 +198,10 @@ class ActionHelper {
       },
     ])
   }
+
+  static randomNumber(length) {
+    return Math.random().toString().slice(2, 12).repeat(1000).slice(0, length)
+  }
 }
 
 module.exports = ActionHelper

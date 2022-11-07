@@ -3,10 +3,10 @@ const ActionHelper = require('../helpers/actionHelpers')
 const BasePage = require('./base.page')
 require('chai').should()
 
-class DashboardPage extends BasePage {
+class HomePage extends BasePage {
   getObjectLocator() {
     const platform = browser.capabilities.platformName.toLowerCase()
-    return require(`./../screens/native/${platform}/dashboard.screen.js`)
+    return require(`./../screens/native/${platform}/home.screen.js`)
   }
 
   async launchApp() {
@@ -25,7 +25,7 @@ class DashboardPage extends BasePage {
   }
 
   async selectSection(section) {
-    const el = await this.getObjectLocator().sectionOnDashboard.replace('%s', section)
+    const el = await this.getObjectLocator().sectionOnHomePage.replace('%s', section)
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }
@@ -48,4 +48,4 @@ class DashboardPage extends BasePage {
   }
 }
 
-module.exports = DashboardPage
+module.exports = HomePage

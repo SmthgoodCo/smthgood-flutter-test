@@ -1,48 +1,48 @@
 const { Given, When, Then } = require('@cucumber/cucumber')
-const DashboardPage = require('../pages/dashboard.page')
-const dashboard = new DashboardPage()
+const HomePage = require('../pages/home.page')
+const Home = new HomePage()
 
 When('I click skip tutorial', async () => {
   console.log(`I click skip tutorial`)
-  await dashboard.clickSkipTutorial()
+  await Home.clickSkipTutorial()
 })
 
-Then('I can see {string} section on dashboard', async (section) => {
-  console.log(`I can see ${section} section on dashboard`)
-  await dashboard.verifySectionOnDashboard(section)
+Then('I can see {string} section on homepage', async (section) => {
+  console.log(`I can see ${section} section on Home`)
+  await Home.verifySectionOnHomePage(section)
 })
 
-When('I select {string} on dashboard', async (section) => {
+When('I select {string} on homepage', async (section) => {
   console.log(`I select ${section}`)
-  await dashboard.selectSection(section)
+  await Home.selectSection(section)
 })
 
 When('I search {string}', async (text) => {
   console.log(`I search ${text}`)
-  await dashboard.searchProduct(text)
+  await Home.searchProduct(text)
 })
 
 When('I click OK', async () => {
   console.log(`I click OK`)
-  await dashboard.clickOkButton()
+  await Home.clickOkButton()
 })
 
 When('I select {string}', async (product) => {
   console.log(`I select ${product}`)
-  await dashboard.selectProduct(product)
+  await Home.selectProduct(product)
 })
 
 Then('I can see {string} information', async (product) => {
   console.log(`I can see ${product} information`)
-  await dashboard.verifyProductInformation(product)
+  await Home.verifyProductInformation(product)
 })
 
 Then('I can see product added in cart', async () => {
   console.log(`I can see product added in cart'`)
-  await dashboard.verifyButtonDisplay('CHECKOUT')
+  await Home.verifyButtonDisplay('CHECKOUT')
 })
 
 When('I click cart', async () => {
   console.log(`I click cart`)
-  await dashboard.clickCart()
+  await Home.clickCart()
 })

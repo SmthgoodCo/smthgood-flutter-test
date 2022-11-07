@@ -8,7 +8,7 @@ Feature: Welcome Screen
   @androidApp
   Scenario: I login with valid account
     Given I login with valid account
-    Then I can see 'JUST FOR YOU' section on dashboard
+    Then I can see 'JUST FOR YOU' section on homepage
 
   @androidApp
   Scenario: Remove product in cart
@@ -18,7 +18,7 @@ Feature: Welcome Screen
 
   @androidApp
   Scenario: Select a product
-    Given I select 'JUST FOR YOU' on dashboard
+    Given I select 'JUST FOR YOU' on homepage
     When I search "<name>"
     And  I select "<name>"
     Then I can see "<name>" information

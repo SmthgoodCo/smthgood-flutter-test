@@ -19,7 +19,12 @@ When('I enter {string}', async (text) => {
 
 Then('I can see the text is {string}', async (text) => {
   console.log(`I can see the text is ${text}`)
-  await basePage.verifyTextOnScreen(text)
+  await basePage.verifyTextIsDisplayed(text)
+})
+
+Then('I can not see the text is {string}', async (text) => {
+  console.log(`I can not see the text is ${text}`)
+  await basePage.verifyTextIsNotDisplayed(text)
 })
 
 When('I click back', async () => {

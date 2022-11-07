@@ -38,6 +38,12 @@ class WelcomePage extends BasePage {
     const el = await this.getObjectLocator().buttonOnScreen.replace('%s', 'ACCEPT COOKIES')
     await ActionHelper.waitForElement(el)
   }
+
+  async enterMultipleValue(value) {
+    const el = await this.getSelector().textField
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.sendText(el, ActionHelper.randomNumber(value))
+  }
 }
 
 module.exports = WelcomePage
