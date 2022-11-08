@@ -1,6 +1,6 @@
 exports.config = {
-  user: process.env.username,
-  key: process.env.accessKey,
+  user: username,
+  key: access - key,
 
   specs: ["./src/featureFiles/*.feature"],
 
@@ -14,7 +14,7 @@ exports.config = {
 
       device: "Google Pixel 5",
       os_version: "12.0",
-      app: process.env.appID,
+      app: buildName,
       "browserstack.debug": true,
     },
   ],
