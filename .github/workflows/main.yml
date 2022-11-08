@@ -17,7 +17,7 @@ jobs:
         with:
           username:  ${{ secrets.BROWSERSTACK_USERNAME }}
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          buildName: ${{ secrets.BROWSERSTACK_APP_ID }}        
+          build-name: ${{ secrets.BROWSERSTACK_APP_ID }}        
 
       - name: 'BrowserStack Local Tunnel Setup' 
         uses: browserstack/github-actions/setup-local@master

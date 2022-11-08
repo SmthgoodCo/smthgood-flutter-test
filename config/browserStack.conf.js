@@ -14,7 +14,7 @@ exports.config = {
 
       device: "Google Pixel 5",
       os_version: "12.0",
-      app: buildName,
+      app: process.env.BROWSERSTACK_BUILD_NAME,
       "browserstack.debug": true,
     },
   ],
