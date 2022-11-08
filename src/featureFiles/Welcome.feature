@@ -22,9 +22,9 @@ Feature: Welcome Screen
   @androidApp
   Scenario: Select a product
     Given I select 'JUST FOR YOU' on dashboard
-    When I search "Women's winter coat"
-    When I select "Women's winter coat"
-    Then I can see "Women's winter coat" information
+    When I search "tets"
+    When I select "tets"
+    Then I can see "tets" information
 
   @androidApp
   Scenario: Click add to cart button

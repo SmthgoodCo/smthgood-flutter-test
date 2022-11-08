@@ -1,6 +1,6 @@
 exports.config = {
-  user: process.env.BROWSERSTACK_USERNAME || "baoquoc_YR3T7s",
-  key: process.env.BROWSERSTACK_ACCESS_KEY || "Na5QU6irh1ZmqYdB5b4Z",
+  user: process.env.BROWSERSTACK_USERNAME,
+  key: process.env.BROWSERSTACK_ACCESS_KEY,
 
   specs: ["./src/featureFiles/*.feature"],
 
@@ -14,9 +14,7 @@ exports.config = {
 
       device: "Google Pixel 5",
       os_version: "12.0",
-      app:
-        process.env.BROWSERSTACK_APP_ID ||
-        "bs://4b41df594a263a3b6e7af12bbfd560128ccc4bdf",
+      app: process.env.BROWSERSTACK_APP_ID,
       "browserstack.debug": true,
     },
   ],
