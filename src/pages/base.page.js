@@ -29,10 +29,9 @@ class BasePage {
     await ActionHelper.waitForElement(el)
   }
 
-  async verifySectionOnDashboard(section) {
-    const el = await this.getObjectLocator().sectionOnDashboard.replace('%s', section)
+  async verifySectionOnHomePage(section) {
+    const el = await this.getObjectLocator().sectionOnHomePage.replace('%s', section)
     await ActionHelper.waitForElement(el)
-    (await ActionHelper.isVisible(el)).should.true
   }
 
   async enterText(text) {
@@ -47,9 +46,14 @@ class BasePage {
     await ActionHelper.click(el)
   }
 
-  async verifyTextOnScreen(text) {
+  async verifyTextIsDisplayed(text) {
     const el = await this.getSelector().textOnScreen.replace('%s', text)
     await ActionHelper.waitForElement(el)
+  }
+
+  async verifyTextIsNotDisplayed(text) {
+    const el = await this.getSelector().textOnScreen.replace('%s', text)
+    await ActionHelper.waitForNotElement(el)
   }
 
   async clickCart() {
