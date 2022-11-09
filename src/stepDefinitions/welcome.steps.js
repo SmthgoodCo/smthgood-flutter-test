@@ -1,28 +1,28 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
-const WelcomePage = require("../pages/welcome.page");
-const welcomePage = new WelcomePage();
+const { Given, When, Then } = require('@cucumber/cucumber')
+const WelcomePage = require('../pages/welcome.page')
+const welcomePage = new WelcomePage()
 
-Given("I launch and Open SmtGood Android app", async () => {
-  console.log("Launch and Open SmtGood Android app");
-  await welcomePage.launchApp();
-});
+Given('I launch and Open SmtGood Android app', async () => {
+  console.log('Launch and Open SmtGood Android app')
+  await welcomePage.launchApp()
+})
 
-Given("I launch and Open SmtGood iOS app", () => {
-  console.log("Launch and Open SmtGood iOS app");
-  welcomePage.launchAppiOS();
-});
+Given('I launch and Open SmtGood iOS app', () => {
+  console.log('Launch and Open SmtGood iOS app')
+  welcomePage.launchAppiOS()
+})
 
-Then("I can see {string} Button", async (text) => {
-  console.log(`I can see ${text} Button`);
-  await welcomePage.verifyButtonDisplay(text);
-});
+Given('I login with valid account', async () => {
+  console.log(`I login with valid account`)
+  await welcomePage.loginWithEmail()
+})
 
-When("I click {string}", async (button) => {
-  console.log(`I click ${button} Button`);
-  await welcomePage.clickButtonOnScreen(button);
-});
+Given('I click "click here" hypelink', async () => {
+  console.log(`I click "click here" hypelink`)
+  await welcomePage.clickHere()
+})
 
-When("I enter {string}", async (text) => {
-  console.log(`I enter ${text}`);
-  await welcomePage.enterText(text);
-});
+Then('I can see Accept Cookies', async () => {
+  console.log(`I can see Accept Cookies`)
+  await welcomePage.verifyAcceptCookies()
+})

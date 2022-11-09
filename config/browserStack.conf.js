@@ -9,7 +9,7 @@ exports.config = {
   capabilities: [
     {
       project: "SMTGood",
-      build: "Webdriverio Android",
+      build: "Android Automation Testing",
       name: "SMTGood-Appium",
 
       device: "Google Pixel 5",
