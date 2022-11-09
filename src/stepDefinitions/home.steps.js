@@ -8,7 +8,7 @@ When('I click skip tutorial', async () => {
 })
 
 Then('I can see {string} section on homepage', async (section) => {
-  console.log(`I can see ${section} section on Home`)
+  console.log(`I can see ${section} section on homepage`)
   await Home.verifySectionOnHomePage(section)
 })
 

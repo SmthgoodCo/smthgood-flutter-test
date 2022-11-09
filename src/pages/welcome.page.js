@@ -39,10 +39,16 @@ class WelcomePage extends BasePage {
     await ActionHelper.waitForElement(el)
   }
 
-  async enterMultipleValue(value) {
-    const el = await this.getSelector().textField
+  async enterMultipleValue(field, value) {
+    const el = await this.getObjectLocator().textField.replace('%s', field)
     await ActionHelper.waitForElement(el)
     await ActionHelper.sendText(el, ActionHelper.randomNumber(value))
+  }
+
+  async enterValue(field, value) {
+    const el = await this.getObjectLocator().textField.replace('%s', field)
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.sendText(el, value)
   }
 }
 

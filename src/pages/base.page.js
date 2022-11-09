@@ -33,7 +33,6 @@ class BasePage {
   async verifySectionOnHomePage(section) {
     const el = await this.getObjectLocator().sectionOnHomePage.replace('%s', section)
     await ActionHelper.waitForElement(el)
-      (await ActionHelper.isVisible(el)).should.true
   }
 
   async enterText(text) {

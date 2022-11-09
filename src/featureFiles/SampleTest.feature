@@ -25,7 +25,7 @@ Feature: Welcome Screen
 
     Examples: product
       | name                |
-      | Women's winter coat |
+      | Áo Thun Dry Cổ Tròn |
 
 
   @androidApp

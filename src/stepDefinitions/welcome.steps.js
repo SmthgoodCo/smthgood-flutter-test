@@ -27,7 +27,12 @@ Then('I can see Accept Cookies', async () => {
   await welcomePage.verifyAcceptCookies()
 })
 
-When('I enter data with {int} character', async (value) => {
-  console.log(`I enter data with ${value} character`)
-  await welcomePage.enterMultipleValue(value)
+When('I click {string} and enter {int} character', async (field, value) => {
+  console.log(`I click ${field} and enter ${value} character`)
+  await welcomePage.enterMultipleValue(field, value)
+})
+
+When('I click {string} and enter {string}', async (field, value) => {
+  console.log(`I click ${field} and enter ${value}`)
+  await welcomePage.enterValue(field, value)
 })

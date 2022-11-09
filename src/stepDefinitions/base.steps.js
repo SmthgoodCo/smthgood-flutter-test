@@ -1,4 +1,5 @@
 const { Given, When, Then } = require('@cucumber/cucumber')
+const ActionHelper = require('../helpers/actionHelpers')
 const BasePage = require('../pages/base.page')
 const basePage = new BasePage()
 
@@ -15,6 +16,11 @@ When('I click {string} button', async (button) => {
 When('I enter {string}', async (text) => {
   console.log(`I enter ${text}`)
   await basePage.enterText(text)
+})
+
+When('I enter a random email', async () => {
+  console.log(`I enter a random email`)
+  await basePage.enterText(`test_${ActionHelper.randomNumber(5)}@gmail.com`)
 })
 
 Then('I can see the text is {string}', async (text) => {
