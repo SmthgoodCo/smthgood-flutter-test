@@ -36,3 +36,8 @@ When('I click {string} and enter {string}', async (field, value) => {
   console.log(`I click ${field} and enter ${value}`)
   await welcomePage.enterValue(field, value)
 })
+
+Then('I can see {string} in text field', async (value) => {
+  console.log(`I can see ${value} in text field`)
+  await welcomePage.verifyValueInTextField(value)
+})

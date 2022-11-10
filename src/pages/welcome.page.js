@@ -50,6 +50,11 @@ class WelcomePage extends BasePage {
     await ActionHelper.waitForElement(el)
     await ActionHelper.sendText(el, value)
   }
+
+  async verifyValueInTextField(value) {
+    const el = await this.getObjectLocator().textField.replace('%s', value)
+    await ActionHelper.waitForElement(el)
+  }
 }
 
 module.exports = WelcomePage

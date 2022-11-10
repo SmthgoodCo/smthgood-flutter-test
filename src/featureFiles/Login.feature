@@ -49,7 +49,7 @@ Feature: Login
     Then I can see the text is 'Your password is incorrect'
 
   @androidApp
-  Scenario: Verify user enters the wrong password for the 5th time, show “forgot password” screen
+  Scenario: Verify enters the wrong password for the 5th time, show “forgot password” screen
     Given I enter 'Abcd123!@'
     When I click 'SIGN IN' button
     And I enter 'Abcd123!@'
@@ -59,12 +59,33 @@ Feature: Login
     And I enter 'Abcd123!@'
     And I click 'SIGN IN' button
     Then I can see 'RESET PASSWORD' button
-    When I click back
+
+  @androidApp
+  Scenario: Verify doesn’t enter data to “Your email” textbox and click “Reset password” button, show message
+    Given I enter ''
+    When I click 'RESET PASSWORD' button
+    Then I can see the text is 'Please enter your email'
+
+  @androidApp
+  Scenario: Verify enter data wrong format email and click “Reset password” button, show message
+    Given I enter 'test'
+    When I click 'RESET PASSWORD' button
+    Then I can see the text is 'Please enter a valid email address'
+
+  @androidApp
+  Scenario: Verify enter data valid email and click “Reset password” button, show “reset password link” screen
+    Given I enter 'automation.smthgoodco@gmail.com'
+    When I click 'RESET PASSWORD' button
+    Then I can see the text is 'Check your inbox'
+
+  @androidApp
+  Scenario: Verify click “ok” button at the “Reset password link” screen, show “Enter password” screen
+    Given I click 'OK!' button
+    Then I can see the text is 'Enter your password'
 
   @androidApp
   Scenario: Verify enter data is correct, show “homepage” screen
-    And I enter 'Abcd123!@#'
-    And I click 'SIGN IN' button
+    Given I enter 'Abcd123!@#'
+    Then I can see '**********' in text field
+    When I click 'SIGN IN' button
     Then I can see 'JUST FOR YOU' section on homepage
-
-
