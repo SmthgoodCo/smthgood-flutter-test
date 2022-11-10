@@ -3,12 +3,13 @@ Feature: Register
   @androidApp
   Scenario: Lauch and Open SmtGood Android app
     Given I launch and Open SmtGood Android app
-    Then I can see 'CONTINUE' button
+    Then I can see the text is 'smthgood!'
 
   @androidApp
   Scenario: Verify enter new email
-    Given I enter a random email
-    When I click 'CONTINUE' button
+    Given I click 'Log in/Sign up here!' button
+    When I enter a random email
+    And I click 'CONTINUE' button
     Then I can see the text is 'Hello stranger'
 
   @androidApp

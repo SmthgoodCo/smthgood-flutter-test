@@ -3,12 +3,13 @@ Feature: Login
   @androidApp
   Scenario: Lauch and Open SmtGood Android app
     Given I launch and Open SmtGood Android app
-    Then I can see 'CONTINUE' button
+    Then I can see the text is 'smthgood!'
 
   @androidApp
   Scenario: Verify input invalid email
-    Given I enter 'Test1'
-    When I click 'CONTINUE' button
+    Given I click 'Log in/Sign up here!' button
+    When I enter 'Test1'
+    And I click 'CONTINUE' button
     Then I can see the text is 'Email invalid, please type your email address'
 
   @androidApp
