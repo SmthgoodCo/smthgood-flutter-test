@@ -71,10 +71,10 @@ exports.config = {
   },
 
   onComplete: function (exitCode, config, capabilities, results) {
-    generate({
-      jsonDir: "./reports/json",
-      reportPath: "./reports/html",
-      openReportInBrowser: false,
-    });
+    // generate({
+    //   jsonDir: "./reports/json",
+    //   reportPath: "./reports/html",
+    //   openReportInBrowser: false,
+    // });
   },
 };
