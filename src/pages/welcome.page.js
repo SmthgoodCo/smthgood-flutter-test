@@ -3,6 +3,7 @@ const ActionHelper = require('../helpers/actionHelpers')
 const BasePage = require('./base.page')
 const userData = require('../testData/user.json')
 require('chai').should()
+const uniqueNumber = ActionHelper.randomNumber(5);
 
 class WelcomePage extends BasePage {
   getObjectLocator() {
@@ -27,6 +28,20 @@ class WelcomePage extends BasePage {
     await this.clickButtonOnScreen('SIGN IN')
   }
 
+  async registerNewUser() {
+    const email = `automation.smthgoodco+${uniqueNumber}@gmail.com`
+    const username = `QuocBao_${uniqueNumber}`
+    await this.enterText(email)
+    await this.clickButtonOnScreen('CONTINUE')
+    await this.enterText('Bao')
+    await this.clickButtonOnScreen('NEXT')
+    await this.enterText(username)
+    await this.clickButtonOnScreen('NEXT')
+    await this.enterValueInTextField('Password', userData.valid.password)
+    await this.enterValueInTextField('Enter password again', userData.valid.password)
+    await this.clickButtonOnScreen('NEXT')
+  }
+
   async clickHere() {
     const el = await this.getSelector().textOnScreen.replace('%s', 'click here')
     await ActionHelper.swipeVertical('up')
@@ -37,6 +52,7 @@ class WelcomePage extends BasePage {
   async verifyAcceptCookies() {
     const el = await this.getObjectLocator().buttonOnScreen.replace('%s', 'ACCEPT COOKIES')
     await ActionHelper.waitForElement(el)
+    ActionHelper.isVisible(el).should.true
   }
 
   async enterMultipleValue(field, value) {
@@ -45,10 +61,16 @@ class WelcomePage extends BasePage {
     await ActionHelper.sendText(el, ActionHelper.randomNumber(value))
   }
 
-  async enterValue(field, value) {
+  async enterValueInTextField(field, value) {
     const el = await this.getObjectLocator().textField.replace('%s', field)
     await ActionHelper.waitForElement(el)
     await ActionHelper.sendText(el, value)
+  }
+
+  async verifyValueInTextField(value) {
+    const el = await this.getObjectLocator().textField.replace('%s', value)
+    await ActionHelper.waitForElement(el)
+    ActionHelper.isVisible(el).should.true
   }
 }
 

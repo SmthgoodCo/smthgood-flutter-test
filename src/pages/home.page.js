@@ -37,7 +37,7 @@ class HomePage extends BasePage {
   }
 
   async selectProduct(text) {
-    const el = await this.getObjectLocator().productName.replace('%s', text)
+    const el = await this.getSelector().itemOnScreen.replace('%s', text)
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }
@@ -45,6 +45,7 @@ class HomePage extends BasePage {
   async verifyProductInformation(product) {
     const el = await this.getSelector().textOnScreen.replace('%s', product)
     await ActionHelper.waitForElement(el)
+    ActionHelper.isVisible(el).should.true
   }
 }
 

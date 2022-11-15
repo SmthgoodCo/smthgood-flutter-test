@@ -10,7 +10,6 @@
         "lint": "eslint .",
         "wdio": "wdio run wdio.conf.js",
         "android:browserStack": "wdio ./config/browserStack.conf.js"
-
     },
     "license": "ISC",
     "dependencies": {
@@ -23,6 +22,7 @@
         "@wdio/spec-reporter": "^7.19.1",
         "@wdio/sync": "^7.19.5",
         "allure-commandline": "^2.17.2",
+        "appium": "^1.22.3",
         "appium-webdriveragent": "^4.4.0",
         "browserstack-local": "^1.5.1",
         "chromedriver": "^90.0.1",
