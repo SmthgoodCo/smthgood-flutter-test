@@ -34,7 +34,12 @@ When('I click {string} and enter {int} character', async (field, value) => {
 
 When('I click {string} and enter {string}', async (field, value) => {
   console.log(`I click ${field} and enter ${value}`)
-  await welcomePage.enterValue(field, value)
+  await welcomePage.enterValueInTextField(field, value)
+})
+
+When('I register a new user', async () => {
+  console.log(`I register a new user`)
+  await welcomePage.registerNewUser()
 })
 
 Then('I can see {string} in text field', async (value) => {

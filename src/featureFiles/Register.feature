@@ -1,13 +1,9 @@
 Feature: Register
 
   @androidApp
-  Scenario: Lauch and Open SmtGood Android app
-    Given I launch and Open SmtGood Android app
-    Then I can see the text is 'smthgood!'
-
-  @androidApp
   Scenario: Verify enter new email
-    Given I click 'Log in/Sign up here!' button
+    Given I launch and Open SmtGood Android app
+    And I click 'Log in/Sign up here!' button
     When I enter a random email
     And I click 'CONTINUE' button
     Then I can see the text is 'Hello stranger'
@@ -142,3 +138,9 @@ Feature: Register
     And I click 'Enter password again' and enter 'password'
     When I click 'NEXT' button
     Then I can see 'START' button
+
+  @androidApp
+  Scenario: Verify click “skip” at the “Express your individuality” screen, show “Skipped our quiz for now” screen
+    Given I click 'Skip' button
+    Then I can see the text is 'Skipped our'
+    And I can see the text is 'quiz for now?'

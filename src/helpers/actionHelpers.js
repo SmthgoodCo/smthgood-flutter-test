@@ -3,8 +3,8 @@ const { signInButton } = require('../screens/native/ios/welcome.screen')
 
 const waitTimeInSeconds = 120000
 class ActionHelper {
-  static launchBrowserUrl(urlToLaunch) {
-    browser.url(urlToLaunch)
+  static async launchBrowserUrl(urlToLaunch) {
+    await browser.url(urlToLaunch)
   }
 
   static getTitle() {
@@ -15,8 +15,8 @@ class ActionHelper {
     await driver.launchApp()
   }
 
-  static closeApp() {
-    driver.closeApp()
+  static async closeApp() {
+    await driver.closeApp()
   }
 
   static backgroundApp() {
@@ -33,7 +33,7 @@ class ActionHelper {
   }
 
   static async isVisible(locator) {
-    return (await browser.$(locator).isDisplayed()) ? true : false
+    return await (await browser.$(locator)).isDisplayed() ? true : false
   }
 
   static async pressKeyCode(value) {
@@ -42,7 +42,7 @@ class ActionHelper {
 
   static async click(locator) {
     await browser.$(locator).click();
-    await this.pause(0.5);
+    await this.pause(2);
   }
 
   static async checkLocatorExist(locator, action) {
@@ -56,7 +56,7 @@ class ActionHelper {
 
   static async waitForElement(locator) {
     this.pause(2)
-    await browser.$(locator).waitForDisplayed({ waitTimeInSeconds })
+    await (await browser.$(locator)).waitForDisplayed({ waitTimeInSeconds })
   }
 
   static async getAttributeValue(locator, attributeName) {
@@ -135,8 +135,8 @@ class ActionHelper {
     return driver.getPageSource()
   }
 
-  static openChrome() {
-    browser.$('//android.widget.TextView[@content-desc="Chrome"]').click()
+  static async openChrome() {
+    await browser.$('//android.widget.TextView[@content-desc="Chrome"]').click()
   }
 
   static openSafari() {

@@ -37,3 +37,13 @@ When('I click back', async () => {
   console.log(`I click Back`)
   await basePage.clickBack()
 })
+
+When('I click on the text is {string}', async (text) => {
+  console.log(`I click on the text is ${text}`)
+  await basePage.clickTextOnScreen(text)
+})
+
+When('I click on the title is {string}', async (text) => {
+  console.log(`I click on the title is ${text}`)
+  await basePage.clickItemOnScreen(text)
+})

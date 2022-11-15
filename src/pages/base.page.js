@@ -28,11 +28,13 @@ class BasePage {
   async verifyButtonDisplay(text) {
     const el = await this.getSelector().buttonOnScreen.replace('%s', text)
     await ActionHelper.waitForElement(el)
+      (await ActionHelper.isVisible(el)).should.true
   }
 
   async verifySectionOnHomePage(section) {
-    const el = await this.getObjectLocator().sectionOnHomePage.replace('%s', section)
+    const el = await this.getSelector().itemOnScreen.replace('%s', section)
     await ActionHelper.waitForElement(el)
+      (await ActionHelper.isVisible(el)).should.true
   }
 
   async enterText(text) {
@@ -50,15 +52,29 @@ class BasePage {
   async verifyTextIsDisplayed(text) {
     const el = await this.getSelector().textOnScreen.replace('%s', text)
     await ActionHelper.waitForElement(el)
+      (await ActionHelper.isVisible(el)).should.true
   }
 
   async verifyTextIsNotDisplayed(text) {
     const el = await this.getSelector().textOnScreen.replace('%s', text)
     await ActionHelper.waitForNotElement(el)
+      (await ActionHelper.isVisible(el)).should.false
   }
 
   async clickCart() {
     const el = await this.getSelector().cartIcon
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
+  }
+
+  async clickTextOnScreen(text) {
+    const el = await this.getSelector().textOnScreen.replace('%s', text)
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
+  }
+
+  async clickItemOnScreen(text) {
+    const el = await this.getSelector().itemOnScreen.replace('%s', text)
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }
