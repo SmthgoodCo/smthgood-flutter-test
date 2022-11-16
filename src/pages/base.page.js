@@ -72,6 +72,12 @@ class BasePage {
     await ActionHelper.click(el);
   }
 
+  async clickImageOnScreen(text) {
+    const el = await this.getSelector().imageOnScreen.replace("%s", text);
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
+  }
+
   async clickItemOnScreen(text) {
     const el = await this.getSelector().itemOnScreen.replace("%s", text);
     await ActionHelper.waitForElement(el);

@@ -45,7 +45,7 @@ class HomePage extends BasePage {
   async verifyProductInformation(product) {
     const el = await this.getSelector().textOnScreen.replace('%s', product)
     await ActionHelper.waitForElement(el)
-    ActionHelper.isVisible(el).should.true
+      (await ActionHelper.isVisible(el)).should.true;
   }
 }
 

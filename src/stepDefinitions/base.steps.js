@@ -43,6 +43,11 @@ When('I click on the text is {string}', async (text) => {
   await basePage.clickTextOnScreen(text)
 })
 
+When('I click {int} on the image', async (text) => {
+  console.log(`I click ${text} the image`)
+  await basePage.clickImageOnScreen(text)
+})
+
 When('I click on the title is {string}', async (text) => {
   console.log(`I click on the title is ${text}`)
   await basePage.clickItemOnScreen(text)

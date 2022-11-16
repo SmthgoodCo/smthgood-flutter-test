@@ -6,6 +6,7 @@ class BaseScreen {
     this.textOnScreen = '//android.view.View[contains(@content-desc, "%s")]'
     this.cartIcon = '(//android.widget.ImageView)[3]'
     this.backButton = '(//android.widget.ImageView)[1]'
+    this.imageOnScreen = '(//android.widget.ImageView)[%s]'
   }
 }
 

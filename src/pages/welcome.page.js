@@ -52,7 +52,7 @@ class WelcomePage extends BasePage {
   async verifyAcceptCookies() {
     const el = await this.getObjectLocator().buttonOnScreen.replace('%s', 'ACCEPT COOKIES')
     await ActionHelper.waitForElement(el)
-    ActionHelper.isVisible(el).should.true
+      (await ActionHelper.isVisible(el)).should.true;
   }
 
   async enterMultipleValue(field, value) {
@@ -70,7 +70,7 @@ class WelcomePage extends BasePage {
   async verifyValueInTextField(value) {
     const el = await this.getObjectLocator().textField.replace('%s', value)
     await ActionHelper.waitForElement(el)
-    ActionHelper.isVisible(el).should.true
+      (await ActionHelper.isVisible(el)).should.true;
   }
 }
 

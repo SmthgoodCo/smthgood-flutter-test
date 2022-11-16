@@ -22,7 +22,7 @@ class CartPage extends BasePage {
   async verifyProductNotDisplayed() {
     const el = await this.getObjectLocator().minusButton
     await ActionHelper.waitForNotElement(el)
-    ActionHelper.isVisible(el).should.false
+      (await ActionHelper.isVisible(el)).should.false;
   }
 
   async clickAddToCart() {
