@@ -38,30 +38,21 @@ class WelcomePage extends BasePage {
     await this.enterText(username);
     await this.clickButtonOnScreen("NEXT");
     await this.enterValueInTextField("Password", userData.valid.password);
-    await this.enterValueInTextField(
-      "Enter password again",
-      userData.valid.password
-    );
+    await this.enterValueInTextField("Enter password again", userData.valid.password);
     await this.clickButtonOnScreen("NEXT");
   }
 
   async clickHere() {
-    const el = await this.getSelector().textOnScreen.replace(
-      "%s",
-      "click here"
-    );
+    const el = await this.getSelector().textOnScreen.replace("%s", "click here");
     await ActionHelper.swipeVertical("up");
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
   }
 
   async verifyAcceptCookies() {
-    const el = await this.getObjectLocator().buttonOnScreen.replace(
-      "%s",
-      "ACCEPT COOKIES"
-    );
-    await ActionHelper.waitForElement(el)(await ActionHelper.isVisible(el))
-      .should.true;
+    const el = await this.getObjectLocator().buttonOnScreen.replace("%s", "ACCEPT COOKIES");
+    await ActionHelper.waitForElement(el);
+    (await ActionHelper.isVisible(el)).should.true;
   }
 
   async enterMultipleValue(field, value) {
