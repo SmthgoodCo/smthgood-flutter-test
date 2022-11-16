@@ -12,18 +12,31 @@ jobs:
     runs-on: ubuntu-latest
     name: Appium Test
     steps:
+      - name: 'BrowserStack Env Setup'
+        uses: 'browserstack/github-actions/setup-env@master'
+        with:
+          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          build-name: ${{ secrets.BROWSERSTACK_APP_ID }}        
+
+      - name: 'BrowserStack Local Tunnel Setup' 
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: random
+
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-        
-      - name: Install and Run Appium Server
-        run: chmod +x ./RunAppiumServer.sh
         
       - name: Dependencies install
         run: npm i
           
       - name: Run Tests
         run: npm run android:browserStack
+
+      - name: 'BrowserStackLocal Stop'
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: stop
+
+

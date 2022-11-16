@@ -302,11 +302,11 @@ exports.config = {
    * @param {<Object>} results object containing test results
    */
   onComplete: function (exitCode, config, capabilities, results) {
-    generate({
-      jsonDir: "./reports/json",
-      reportPath: "./reports/html",
-      openReportInBrowser: false,
-    });
+    // generate({
+    //   jsonDir: "./reports/json",
+    //   reportPath: "./reports/html",
+    //   openReportInBrowser: false,
+    // });
   },
   /**
    * Gets executed when a refresh happens.

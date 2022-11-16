@@ -29,8 +29,8 @@ class WelcomePage extends BasePage {
   }
 
   async registerNewUser() {
-    const email = `automation.smthgoodco+${uniqueNumber}@gmail.com`
-    const username = `QuocBao_${uniqueNumber}`
+    const email = `automation.smthgoodco+${uniqueNumber}@gmail.com`;
+    const username = `QuocBao_${uniqueNumber}`;
     await this.enterText(email);
     await this.clickButtonOnScreen("CONTINUE");
     await this.enterText("Bao");
@@ -52,7 +52,7 @@ class WelcomePage extends BasePage {
   async verifyAcceptCookies() {
     const el = await this.getObjectLocator().buttonOnScreen.replace("%s", "ACCEPT COOKIES");
     await ActionHelper.waitForElement(el);
-    (await ActionHelper.isVisible(el)).should.true
+    (await ActionHelper.isVisible(el)).should.true;
   }
 
   async enterMultipleValue(field, value) {
@@ -74,4 +74,4 @@ class WelcomePage extends BasePage {
   }
 }
 
-module.exports = WelcomePage
+module.exports = WelcomePage;
