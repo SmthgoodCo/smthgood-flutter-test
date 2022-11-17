@@ -130,3 +130,10 @@ Feature: Quiz
     Then I can see the text is 'Your Persona'
     And I can see the text is 'The Purist'
 
+  @androidApp
+  Scenario: Verify click “Express your style”, show “Onboarding - introduction” screen
+    Given I swipe vertical
+    When I click 'EXPRESS YOUR STYLE' button
+    Then I can see the text is 'Ready to embark'
+    Then I can see the text is 'Start by putting together the looks you love!'
+

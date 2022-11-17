@@ -48,6 +48,11 @@ When('I click {int} on the image', async (text) => {
   await basePage.clickImageOnScreen(text)
 })
 
+When('I swipe vertical', async () => {
+  console.log(`I swipe vertical`)
+  await ActionHelper.swipeVertical('up')
+})
+
 When('I click on the title is {string}', async (text) => {
   console.log(`I click on the title is ${text}`)
   await basePage.clickItemOnScreen(text)
