@@ -26,7 +26,7 @@ exports.config = {
 
   waitforTimeout: 60000,
 
-  connectionRetryTimeout: 120000,
+  connectionRetryTimeout: 300000,
 
   services: ["browserstack"],
 
@@ -45,7 +45,7 @@ exports.config = {
     source: true,
     strict: false,
     tagsInTitle: false,
-    timeout: 120000,
+    timeout: 300000,
     retry: 0,
   },
 

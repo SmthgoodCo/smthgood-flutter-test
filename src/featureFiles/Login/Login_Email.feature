@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Login with Email
 
   @androidApp
   Scenario: Lauch and Open SmtGood Android app

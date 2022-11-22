@@ -42,6 +42,16 @@ When('I register a new user', async () => {
   await welcomePage.registerNewUser()
 })
 
+When('I click google icon', async () => {
+  console.log(`I click google icon`)
+  await welcomePage.clickGoogleIcon()
+})
+
+When('I sign in google account', async () => {
+  console.log(`I sign in google account`)
+  await welcomePage.signInGoogleAccount()
+})
+
 Then('I can see {string} in text field', async (value) => {
   console.log(`I can see ${value} in text field`)
   await welcomePage.verifyValueInTextField(value)

@@ -1,7 +1,7 @@
 const { default: $ } = require("webdriverio/build/commands/browser/$");
 const { signInButton } = require("../screens/native/ios/welcome.screen");
 
-const waitTimeInSeconds = 120000;
+const waitTimeInSeconds = 300000;
 class ActionHelper {
   static async launchBrowserUrl(urlToLaunch) {
     await browser.url(urlToLaunch);

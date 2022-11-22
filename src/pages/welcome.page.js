@@ -72,6 +72,27 @@ class WelcomePage extends BasePage {
     await ActionHelper.waitForElement(el);
     (await ActionHelper.isVisible(el)).should.true;
   }
+
+  async clickGoogleIcon() {
+    const el = await this.getObjectLocator().googleIcon;
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
+  }
+
+  async signInGoogleAccount() {
+    const textField = await this.getSelector().textField;
+    const googleAcc = await this.getObjectLocator().textView.replace("%s", userData.googleAccount.email);
+
+    if (await ActionHelper.isVisible(googleAcc) === true) {
+      await ActionHelper.click(googleAcc);
+    } else {
+      await ActionHelper.waitForElement(textField);
+      await ActionHelper.sendText(textField, userData.googleAccount.email);
+      await ActionHelper.sendText(textField, userData.googleAccount.password);
+      await ActionHelper.click(await this.getObjectLocator().buttonOnScreen.replace("%s", "I agree"));
+      await ActionHelper.click(await this.getObjectLocator().buttonOnScreen.replace("%s", "ACCEPT"));
+    }
+  }
 }
 
 module.exports = WelcomePage;

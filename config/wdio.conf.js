@@ -25,7 +25,10 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./src/featureFiles/*.feature"],
+  specs: [
+    "./src/featureFiles/*.feature",
+    "./src/featureFiles/*/*.feature",
+  ],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -74,7 +77,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "silent",
+  logLevel: "error",
   //
   // Set specific log levels per logger
   // loggers:
@@ -143,7 +146,7 @@ exports.config = {
     source: true,
     strict: false,
     tagsInTitle: false,
-    timeout: 120000,
+    timeout: 300000,
     retry: 0,
   },
   //

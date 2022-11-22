@@ -2,5 +2,9 @@
   "valid": {
     "email": "baoquoc+automation@smthgoodco.com",
     "password": "Abcd123!@#"
+  },
+  "googleAccount": {
+    "email": "automation.smthgoodco@gmail.com",
+    "password": "Tst!2022"
   }
 }
