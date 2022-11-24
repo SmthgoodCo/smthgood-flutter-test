@@ -144,3 +144,10 @@ Feature: Register
     Given I click 'Skip' button
     Then I can see the text is 'Skipped our'
     And I can see the text is 'quiz for now?'
+
+  @androidApp
+  Scenario: Verify skip tutorial, show “Homepage” & turn off the guide
+    Given I click 'NEXT' button
+    When I click 'Skip' button
+    Given I click skip tutorial
+    Then I can not see the text is 'Start shopping the newest arrivals and more.'

@@ -3,13 +3,11 @@ const ActionHelper = require('../helpers/actionHelpers')
 const BasePage = require('./base.page')
 require('chai').should()
 
-class HomePage extends BasePage {
+class DashboardPage extends BasePage {
   getObjectLocator() {
     const platform = browser.capabilities.platformName.toLowerCase()
-    return require(`./../screens/native/${platform}/home.screen.js`)
+    return require(`./../screens/native/${platform}/dashboard.screen.js`)
   }
-
-  nextGuideBtn = async (text, i) => `//android.view.View[@content-desc="${text}"]/following-sibling::android.widget.ImageView[@index="${i}"] `
 
   async launchApp() {
     await ActionHelper.launchApp()
@@ -27,7 +25,7 @@ class HomePage extends BasePage {
   }
 
   async selectSection(section) {
-    const el = await this.getObjectLocator().sectionOnHomePage.replace('%s', section)
+    const el = await this.getObjectLocator().sectionOnDashboard.replace('%s', section)
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }
@@ -39,7 +37,7 @@ class HomePage extends BasePage {
   }
 
   async selectProduct(text) {
-    const el = await this.getSelector().itemOnScreen.replace('%s', text)
+    const el = await this.getObjectLocator().productName.replace('%s', text)
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }
@@ -47,14 +45,7 @@ class HomePage extends BasePage {
   async verifyProductInformation(product) {
     const el = await this.getSelector().textOnScreen.replace('%s', product)
     await ActionHelper.waitForElement(el)
-      (await ActionHelper.isVisible(el)).should.true;
-  }
-
-  async clickNextGuide(text, i) {
-    const el = await this.nextGuideBtn(text, i)
-    await ActionHelper.waitForElement(el)
-    await ActionHelper.click(el)
   }
 }
 
-module.exports = HomePage
+module.exports = DashboardPage

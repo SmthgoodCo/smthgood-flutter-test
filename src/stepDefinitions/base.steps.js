@@ -43,7 +43,7 @@ When('I click on the text is {string}', async (text) => {
   await basePage.clickTextOnScreen(text)
 })
 
-When('I click {int} on the image', async (text) => {
+When('I click on the image with index {int}', async (text) => {
   console.log(`I click ${text} the image`)
   await basePage.clickImageOnScreen(text)
 })

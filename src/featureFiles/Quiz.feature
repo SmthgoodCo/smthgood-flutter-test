@@ -125,7 +125,7 @@ Feature: Quiz
 
   @androidApp
   Scenario: Verify select option & click “Next” button, show Quiz result screen
-    Given I click 2 on the image
+    Given I click on the image with index 1
     When I click 'NEXT' button
     Then I can see the text is 'Your Persona'
     And I can see the text is 'The Purist'

@@ -46,3 +46,8 @@ When('I click cart', async () => {
   console.log(`I click cart`)
   await Home.clickCart()
 })
+
+When('I click next {string} with index {int}', async (text, i) => {
+  console.log(`I click next ${text} with index ${i}`)
+  await Home.clickNextGuide(text, i)
+})
