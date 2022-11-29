@@ -9,7 +9,7 @@ class HomePage extends BasePage {
     return require(`./../screens/native/${platform}/home.screen.js`)
   }
 
-  nextGuideBtn = async (text, i) => `//android.view.View[@content-desc="${text}"]/following-sibling::android.widget.ImageView[@index="${i}"] `
+  nextGuideBtn = async (text, i) => `//android.view.View[contains(@content-desc, "${text}")]/following-sibling::android.widget.ImageView[@index="${i}"]`
 
   async launchApp() {
     await ActionHelper.launchApp()
@@ -18,12 +18,14 @@ class HomePage extends BasePage {
 
   async clickSkipTutorial() {
     const el = await this.getObjectLocator().skipTutorialButton
-    await ActionHelper.checkLocatorExist(el, ActionHelper.click(el))
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
   }
 
   async clickOkButton() {
     const el = await this.getSelector().buttonOnScreen.replace('%s', 'OK')
-    await ActionHelper.checkLocatorExist(el, ActionHelper.click(el))
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
   }
 
   async selectSection(section) {
@@ -52,6 +54,12 @@ class HomePage extends BasePage {
 
   async clickNextGuide(text, i) {
     const el = await this.nextGuideBtn(text, i)
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
+  }
+
+  async clickCreateLookBook() {
+    const el = await this.getObjectLocator().createLookBookBtn
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }

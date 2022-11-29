@@ -1,53 +1,58 @@
 const { Given, When, Then } = require('@cucumber/cucumber')
 const HomePage = require('../pages/home.page')
-const Home = new HomePage()
+const home = new HomePage()
 
 When('I click skip tutorial', async () => {
   console.log(`I click skip tutorial`)
-  await Home.clickSkipTutorial()
+  await home.clickSkipTutorial()
 })
 
 Then('I can see {string} section on homepage', async (section) => {
   console.log(`I can see ${section} section on homepage`)
-  await Home.verifySectionOnHomePage(section)
+  await home.verifySectionOnHomePage(section)
 })
 
 When('I select {string} on homepage', async (section) => {
   console.log(`I select ${section}`)
-  await Home.selectSection(section)
+  await home.selectSection(section)
 })
 
 When('I search {string}', async (text) => {
   console.log(`I search ${text}`)
-  await Home.searchProduct(text)
+  await home.searchProduct(text)
 })
 
 When('I click OK', async () => {
   console.log(`I click OK`)
-  await Home.clickOkButton()
+  await home.clickOkButton()
 })
 
 When('I select {string}', async (product) => {
   console.log(`I select ${product}`)
-  await Home.selectProduct(product)
+  await home.selectProduct(product)
 })
 
 Then('I can see {string} information', async (product) => {
   console.log(`I can see ${product} information`)
-  await Home.verifyProductInformation(product)
+  await home.verifyProductInformation(product)
 })
 
 Then('I can see product added in cart', async () => {
   console.log(`I can see product added in cart'`)
-  await Home.verifyButtonDisplay('CHECKOUT')
+  await home.verifyButtonDisplay('CHECKOUT')
 })
 
 When('I click cart', async () => {
   console.log(`I click cart`)
-  await Home.clickCart()
+  await home.clickCart()
 })
 
-When('I click next {string} with index {int}', async (text, i) => {
+When('I click next at {string} with index {int}', async (text, i) => {
   console.log(`I click next ${text} with index ${i}`)
-  await Home.clickNextGuide(text, i)
+  await home.clickNextGuide(text, i)
+})
+
+When('I click create LookBook', async () => {
+  console.log(`I click create LookBook`)
+  await home.clickCreateLookBook()
 })

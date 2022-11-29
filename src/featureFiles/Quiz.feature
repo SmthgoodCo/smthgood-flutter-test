@@ -128,7 +128,7 @@ Feature: Quiz
     Given I click on the image with index 1
     When I click 'NEXT' button
     Then I can see the text is 'Your Persona'
-    And I can see the text is 'The Purist'
+    And I can see the text is 'The Progressive'
 
   @androidApp
   Scenario: Verify click “Express your style”, show “Onboarding - introduction” screen

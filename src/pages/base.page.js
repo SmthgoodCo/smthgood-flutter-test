@@ -83,6 +83,12 @@ class BasePage {
     await ActionHelper.waitForElement(el);
     await ActionHelper.click(el);
   }
+
+  async verifyTitleIsDisplayed(text) {
+    const el = await this.getSelector().itemOnScreen.replace("%s", text);
+    await ActionHelper.waitForElement(el);
+    (await ActionHelper.isVisible(el)).should.true;
+  }
 }
 
 module.exports = BasePage;

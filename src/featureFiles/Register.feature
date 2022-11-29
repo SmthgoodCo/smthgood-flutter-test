@@ -149,5 +149,5 @@ Feature: Register
   Scenario: Verify skip tutorial, show “Homepage” & turn off the guide
     Given I click 'NEXT' button
     When I click 'Skip' button
-    Given I click skip tutorial
+    And I click skip tutorial
     Then I can not see the text is 'Start shopping the newest arrivals and more.'

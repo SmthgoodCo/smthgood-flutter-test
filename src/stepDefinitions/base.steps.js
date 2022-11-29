@@ -28,6 +28,11 @@ Then('I can see the text is {string}', async (text) => {
   await basePage.verifyTextIsDisplayed(text)
 })
 
+Then('I can see the title is {string}', async (text) => {
+  console.log(`I can see the title is ${text}`)
+  await basePage.verifyTitleIsDisplayed(text)
+})
+
 Then('I can not see the text is {string}', async (text) => {
   console.log(`I can not see the text is ${text}`)
   await basePage.verifyTextIsNotDisplayed(text)
