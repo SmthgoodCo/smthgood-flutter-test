@@ -14,11 +14,6 @@ class DashboardPage extends BasePage {
     await ActionHelper.switchToNativeContext()
   }
 
-  async clickSkipTutorial() {
-    const el = await this.getObjectLocator().skipTutorialButton
-    await ActionHelper.checkLocatorExist(el, ActionHelper.click(el))
-  }
-
   async clickOkButton() {
     const el = await this.getSelector().buttonOnScreen.replace('%s', 'OK')
     await ActionHelper.checkLocatorExist(el, ActionHelper.click(el))

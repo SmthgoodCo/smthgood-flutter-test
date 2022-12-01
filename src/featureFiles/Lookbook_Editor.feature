@@ -70,14 +70,19 @@ Feature: Lookbook Editor
 
   @androidApp
   Scenario: Verify click OK at the “Getting started” Popup, Show “Lookbook editor” screen
-    Given I click on the title is 'Do not show this message again.'
-    And I click 'OK' button
+    Given I click 'OK' button
     Then I can not see the text is 'GETTING STARTED?'
-
 
   @androidApp
   Scenario: Verify click “Blank canvas” button for the second time or more, Show “Lookbook Editor” screen
     Given I click back
     And I click create LookBook
     When I click on the title is 'Blank canvas'
-    Then I can see the title is 'START CREATING'
+    And I click 'OK' button
+    Then I can see the title is 'Products'
+    Then I can see the title is 'My Items'
+    Then I can see the title is 'Upload'
+    Then I can see the title is 'Elements'
+    Then I can see the title is 'Type'
+    # Then I can see the title is 'Template'
+    # Then I can see the title is 'Background'

@@ -17,14 +17,14 @@ class HomePage extends BasePage {
   }
 
   async clickSkipTutorial() {
-    const el = await this.getObjectLocator().skipTutorialButton
-    await ActionHelper.waitForElement(el)
-    await ActionHelper.click(el)
+    const el = await this.getObjectLocator().skipTutorialButton;
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.click(el);
   }
 
   async clickOkButton() {
-    const el = await this.getSelector().buttonOnScreen.replace('%s', 'OK')
-    await ActionHelper.waitForElement(el)
+    const el = await this.getSelector().buttonOnScreen.replace('%s', 'OK');
+    await ActionHelper.waitForElement(el);
     await ActionHelper.click(el)
   }
 
