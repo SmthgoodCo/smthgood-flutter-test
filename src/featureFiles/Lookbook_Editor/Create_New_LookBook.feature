@@ -1,4 +1,4 @@
-Feature: Lookbook Editor
+Feature: Create New LookBook
 
   @androidApp
   Scenario: Verify click Create Lookbook at the homepage, show “New Lookbook” screen
@@ -44,7 +44,7 @@ Feature: Lookbook Editor
 
   @androidApp
   Scenario: Verify click next at the “Type” screen, Show “Templates” guide
-    Given I click next at 'add text' with index 5
+    Given I click next at 'add text' with index 6
     Then I can see the text is 'Click to add Lookbook templates.'
 
   @androidApp
@@ -78,11 +78,42 @@ Feature: Lookbook Editor
     Given I click back
     And I click create LookBook
     When I click on the title is 'Blank canvas'
+    Then I can see the text is 'GETTING STARTED?'
+    When I click 'OK' button
+
+  @androidApp
+  Scenario: Verify click “Templates” button for the second time or more, show “Templates” screen
+    Given I click back
+    And I click create LookBook
+    When I click on the title is 'Template'
     And I click 'OK' button
+    Then I can see the text is 'TEMPLATES'
+    And I can see the title is 'ELEGANT CHIC'
+    And I can see the title is 'MINIMALIST VOGUE'
+    And I can see the title is 'STRIKING & BOLD'
+    When I close 'TEMPLATES' popup
+
+  @androidApp
+  Scenario: Verify click “Draft Lookbooks” button, show Draft Lookbooks screen
+    Given I click back
+    And I click create LookBook
+    When I click on the title is 'Draft Lookbooks'
+    Then I can see the text is 'DRAFT LOOKBOOKS'
+
+  @androidApp
+  Scenario: Verify  click “Start Fresh” button at the Draft Lookbooks screen, show “Lookbook Editor” screen
+    Given I click 'START FRESH' button
+    When I click 'OK' button
     Then I can see the title is 'Products'
-    Then I can see the title is 'My Items'
-    Then I can see the title is 'Upload'
-    Then I can see the title is 'Elements'
-    Then I can see the title is 'Type'
-    # Then I can see the title is 'Template'
-    # Then I can see the title is 'Background'
+    And I can see the title is 'My Items'
+    And I can see the title is 'Upload'
+    And I can see the title is 'Elements'
+    And I can see the title is 'Type'
+    When I click back
+
+  @androidApp
+  Scenario: Verify click “x” button at the New Lookbook screen, show Homepage
+    Given I click back
+    And I click create LookBook
+    When I close 'NEW LOOKBOOK' popup
+    And I can not see the text is 'NEW LOOKBOOK'

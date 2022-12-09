@@ -27,7 +27,7 @@ When('I click OK', async () => {
   await home.clickOkButton()
 })
 
-When('I select {string}', async (product) => {
+When('I select a product that is {string}', async (product) => {
   console.log(`I select ${product}`)
   await home.selectProduct(product)
 })

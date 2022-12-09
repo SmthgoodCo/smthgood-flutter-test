@@ -29,7 +29,7 @@ class WelcomePage extends BasePage {
   }
 
   async registerNewUser() {
-    const email = `automation.smthgoodco+${uniqueNumber}@gmail.com`;
+    const email = `automation.smthgoodco_${uniqueNumber}@gmail.com`;
     const username = `QuocBao_${uniqueNumber}`;
     await this.enterText(email);
     await this.clickButtonOnScreen("CONTINUE");

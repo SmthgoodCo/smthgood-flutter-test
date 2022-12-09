@@ -120,7 +120,7 @@ class ActionHelper {
 
   static async touchTopRight() {
     console.log(await this.getDeviceSize());
-    ActionHelper.pause(1);
+    this.pause(1);
     await browser.touchAction([
       {
         action: "press",
@@ -149,10 +149,10 @@ class ActionHelper {
     driver.hideKeyboard();
   }
 
-  static async swipeDown() {
+  static async swipeLeftToRight() {
     await browser.touchAction([
-      { action: "press", x: 1000, y: 800 },
-      { action: "moveTo", x: 1000, y: 1000 },
+      { action: "press", x: 900, y: 760 },
+      { action: "moveTo", x: 100, y: 760 },
       "release",
     ]);
   }
