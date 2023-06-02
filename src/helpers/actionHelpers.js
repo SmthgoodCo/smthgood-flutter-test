@@ -36,6 +36,7 @@ class ActionHelper {
     return (await (await browser.$(locator)).isDisplayed()) ? true : false;
   }
 
+
   static async pressKeyCode(value) {
     await driver.pressKeyCode(value);
   }

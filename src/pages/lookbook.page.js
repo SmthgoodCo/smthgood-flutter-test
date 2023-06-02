@@ -38,7 +38,8 @@ class LookBookPage extends BasePage {
   }
 
   async imageUploaded(image) {
-    const el = await this.getObjectLocator().imageUploaded;
+    await browser.pause(5000)
+    const el = await this.getObjectLocator().imageUploaded
     await ActionHelper.waitForElement(el)
     await expect(browser.$$(el)).toHaveChildren(image)
   }
@@ -49,8 +50,8 @@ class LookBookPage extends BasePage {
     await ActionHelper.click(el)
   }
 
-  async clickPlusButton(item) {
-    const el = await this.getObjectLocator().plusButton.replace('%s', item);
+  async clickPlusButton() {
+    const el = await this.getObjectLocator().plusButton;
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }

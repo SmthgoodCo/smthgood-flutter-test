@@ -27,9 +27,9 @@ When('I click many select {string}', async (item) => {
   await lookBook.clickManySelect(item)
 })
 
-When('I click plus button in {string}', async (item) => {
-  console.log(`I click plus button at ${item}`)
-  await lookBook.clickPlusButton(item)
+When('I click plus button', async () => {
+  console.log(`I click plus button`)
+  await lookBook.clickPlusButton()
 })
 
 When('I click favorite {string}', async (item) => {

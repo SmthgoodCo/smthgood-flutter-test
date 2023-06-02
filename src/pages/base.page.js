@@ -42,6 +42,11 @@ class BasePage {
     await ActionHelper.sendText(el, text);
   }
 
+  async inputText(el, text) {
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.sendText(el, text);
+  }
+
   async clickBack() {
     const el = await this.getSelector().backButton;
     await ActionHelper.waitForElement(el);

@@ -9,7 +9,10 @@
         "iosBrowser": "wdio ./config/iosBrowser.config.js",
         "lint": "eslint .",
         "wdio": "wdio run wdio.conf.js",
-        "android:browserStack": "wdio ./config/browserStack.conf.js"
+        "android:browserStack": "wdio ./config/browserStack.conf.js",
+        "allure:report": "allure generate allure-results --clean -o allure-report",
+        "allure:open": "allure open allure-report",
+        "pretest": "rm -rf allure-results & rm -rf allure-report"
     },
     "license": "ISC",
     "dependencies": {

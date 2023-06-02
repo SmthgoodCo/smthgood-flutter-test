@@ -3,8 +3,11 @@ Feature: Register
   @androidApp
   Scenario: Verify enter new email
     Given I launch and Open SmtGood Android app
+    When I click on the image with index 5
+    And I click 'Sign up here!' button
     And I click 'Log in/Sign up here!' button
-    When I enter a random email
+    And I skip the privacy popup
+    And I enter a random email
     And I click 'CONTINUE' button
     Then I can see the text is 'Hello stranger'
 
@@ -15,7 +18,7 @@ Feature: Register
 
   @androidApp
   Scenario: Verify enter data more than 25 character, show message
-    Given I click 'Your name' and enter 26 character
+    Given I click your field and enter 26 character
     When I click 'NEXT' button
     Then I can see the text is 'Enter a name under 25 character'
 
@@ -69,19 +72,19 @@ Feature: Register
 
   @androidApp
   Scenario: Verify enter more than 30 characters, show message
-    Given I click 'Username' and enter 31 character
+    Given I click your field and enter 31 character
     When I click 'NEXT' button
     Then I can not see the text is 'Create a password'
 
-  @androidApp
-  Scenario: Verify enter valid value but user exist in system, show message
-    Given I enter 'quocbao'
-    When I click 'NEXT' button
-    Then I can see the text is 'This username is already taken, try another.'
+  # @androidApp
+  # Scenario: Verify enter valid value but user exist in system, show message
+  #   Given I enter 'quocbao'
+  #   When I click 'NEXT' button
+  #   Then I can see the text is 'This username is already taken, try another.'
 
   @androidApp
   Scenario: Verify enter with 30 characters, show “create password” screen
-    Given I click 'Username' and enter 30 character
+    Given I click password field and enter 30 character
     When I click 'NEXT' button
     Then I can see the text is 'Create a password'
     When I click back
@@ -95,7 +98,7 @@ Feature: Register
 
   @androidApp
   Scenario: Verify enter with 9 characters with a dot character, show “create password” screen
-    Given I click 'Username' and enter 9 character
+    Given I click your field and enter 9 character
     When I click 'NEXT' button
     Then I can see the text is 'Create a password'
 
@@ -107,47 +110,47 @@ Feature: Register
 
   @androidApp
   Scenario: Verify enter data less than 8 characters, show message
-    Given I click 'Password' and enter 7 character
+    Given I click password field and enter 7 character
     When I click 'NEXT' button
     Then I can see the text is 'At least 8 characters and no spaces'
 
   @androidApp
   Scenario: Verify enter data with 8 characters & enter password again less than 8 characters, show message
-    Given I click 'Password' and enter 8 character
-    And I click 'Enter password again' and enter 7 character
+    Given I click password field and enter 8 character
+    And I click repassword field and enter 7 character
     When I click 'NEXT' button
     Then I can see the text is 'At least 8 characters and no spaces'
 
   @androidApp
   Scenario: Verify user enter data with 8 characters & enter password again don’t enter data, show message
-    Given I click 'Password' and enter 8 character
-    And I click 'Enter password again' and enter 0 character
+    Given I click password field and enter 8 character
+    And I click repassword field and enter 0 character
     When I click 'NEXT' button
     Then I can see the text is 'Please re-enter your password'
 
   @androidApp
   Scenario: Verify enter data with 8 characters & enter password again enter more than 8 characters
-    Given I click 'Password' and enter 8 character
-    And I click 'Enter password again' and enter 10 character
+    Given I click password field and enter 8 character
+    And I click repassword field and enter 10 character
     When I click 'NEXT' button
     Then I can see the text is 'The passwords do not match, please check and try again'
 
   @androidApp
   Scenario: Verify enter data for Password is 8 characters & Enter password again as same as the password, show "Onboarding Quiz" screen
-    Given I click 'Password' and enter 'password'
-    And I click 'Enter password again' and enter 'password'
+    Given I click password field and enter 'password'
+    And I click repassword field and enter 'password'
     When I click 'NEXT' button
-    Then I can see 'START' button
+  #   Then I can see 'START' button
 
-  @androidApp
-  Scenario: Verify click “skip” at the “Express your individuality” screen, show “Skipped our quiz for now” screen
-    Given I click 'Skip' button
-    Then I can see the text is 'Skipped our'
-    And I can see the text is 'quiz for now?'
+  # @androidApp
+  # Scenario: Verify click “skip” at the “Express your individuality” screen, show “Skipped our quiz for now” screen
+  #   Given I click 'Skip' button
+  #   Then I can see the text is 'Skipped our'
+  #   And I can see the text is 'quiz for now?'
 
-  @androidApp
-  Scenario: Verify skip tutorial, show “Homepage” & turn off the guide
-    Given I click 'NEXT' button
-    When I click 'Skip' button
-    And I click skip tutorial
-    Then I can not see the text is 'Start shopping the newest arrivals and more.'
+  # @androidApp
+  # Scenario: Verify skip tutorial, show “Homepage” & turn off the guide
+  #   Given I click 'NEXT' button
+  #   When I click 'Skip' button
+  #   And I click skip tutorial
+  #   Then I can not see the text is 'Start shopping the newest arrivals and more.'

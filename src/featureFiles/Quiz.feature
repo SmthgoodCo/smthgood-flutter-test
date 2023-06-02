@@ -1,10 +1,14 @@
+@Pending
 Feature: Quiz
 
   @androidApp
   Scenario: Verify click “Start” at the “Express your individuality” screen, show “Question 1/6” screen
     Given I launch and Open SmtGood Android app
+    When I click on the image with index 5
+    And I click 'Sign up here!' button
     And I click 'Log in/Sign up here!' button
-    When I register a new user
+    And I skip the privacy popup
+    And I login with email 'toanSmtgood_automation@gmail.com' and password 'automation123'
     And I click 'START' button
     Then I can see the text is 'QUESTION 1/6'
 

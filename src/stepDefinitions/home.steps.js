@@ -47,12 +47,28 @@ When('I click cart', async () => {
   await home.clickCart()
 })
 
-When('I click next at {string} with index {int}', async (text, i) => {
-  console.log(`I click next ${text} with index ${i}`)
-  await home.clickNextGuide(text, i)
+When('I click menu bottom with index {int}', async (i) => {
+  console.log(`I click menu bottom with index ${i}`)
+  await home.clickMenuBottom(i)
 })
+
+When('I click element with index {int}', async (i) => {
+  console.log(`I click element with index ${i}`)
+  await home.clickMenuBottom(i)
+})
+
+When('I click element with index {int} and position {int}', async (i, index) => {
+  console.log(`I click element with index ${i} and position ${index}`)
+  await home.clickNextGuide(i, index)
+});
+
 
 When('I click create LookBook', async () => {
   console.log(`I click create LookBook`)
   await home.clickCreateLookBook()
+})
+
+When('I click close icon', async () => {
+  console.log('I click close icon')
+  await home.clickBack()
 })

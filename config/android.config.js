@@ -20,6 +20,6 @@ config.capabilities = [
   },
 ];
 
-config.cucumberOpts.tagExpression = "@androidApp"; // pass tag to run tests specific to android
+config.cucumberOpts.tagExpression = process.env.tags ? process.env.tags : 'not @Pending and @androidApp'; // pass tag to run tests specific to android
 
 exports.config = config;

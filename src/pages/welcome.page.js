@@ -16,9 +16,14 @@ class WelcomePage extends BasePage {
     await ActionHelper.switchToNativeContext();
   }
 
-  launchAppiOS() {
-    ActionHelper.launchApp();
-    ActionHelper.switchToNativeContext();
+  async launchAppiOS() {
+    await ActionHelper.launchApp();
+    await ActionHelper.switchToNativeContext();
+  }
+  
+  async  skipPrivacyPopup() {
+    await this.verifyTextIsDisplayed('We Care About Your Privacy')
+    await this.clickButtonOnScreen('AGREE')
   }
 
   async loginWithEmail() {
@@ -29,7 +34,7 @@ class WelcomePage extends BasePage {
   }
 
   async registerNewUser() {
-    const email = `automation.smthgoodco_${uniqueNumber}@gmail.com`;
+    const email = `auto${uniqueNumber}@gmail.com`;
     const username = `QuocBao_${uniqueNumber}`;
     await this.enterText(email);
     await this.clickButtonOnScreen("CONTINUE");
@@ -37,9 +42,16 @@ class WelcomePage extends BasePage {
     await this.clickButtonOnScreen("NEXT");
     await this.enterText(username);
     await this.clickButtonOnScreen("NEXT");
-    await this.enterValueInTextField("Password", userData.valid.password);
-    await this.enterValueInTextField("Enter password again", userData.valid.password);
+    await this.inputText(await this.getObjectLocator().password, userData.valid.password);
+    await this.inputText(await this.getObjectLocator().repassword, userData.valid.password);
     await this.clickButtonOnScreen("NEXT");
+  }
+
+  async login(email, passsword) {
+    await this.enterText(email);
+    await this.clickButtonOnScreen("CONTINUE");
+    await this.enterText(passsword);
+    await this.clickButtonOnScreen("SIGN IN");
   }
 
   async clickHere() {
@@ -55,8 +67,8 @@ class WelcomePage extends BasePage {
     (await ActionHelper.isVisible(el)).should.true;
   }
 
-  async enterMultipleValue(field, value) {
-    const el = await this.getObjectLocator().textField.replace("%s", field);
+  async enterMultipleValue(value) {
+    const el = await this.getObjectLocator().field;
     await ActionHelper.waitForElement(el);
     await ActionHelper.sendText(el, ActionHelper.randomNumber(value));
   }
@@ -92,6 +104,18 @@ class WelcomePage extends BasePage {
       await ActionHelper.click(await this.getObjectLocator().buttonOnScreen.replace("%s", "I agree"));
       await ActionHelper.click(await this.getObjectLocator().buttonOnScreen.replace("%s", "ACCEPT"));
     }
+  }
+
+  async enterPassword(value) {
+    const el = await this.getObjectLocator().password;
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.sendText(el, value);
+  }
+
+  async enterRepassword(value) {
+    const el = await this.getObjectLocator().repassword;
+    await ActionHelper.waitForElement(el);
+    await ActionHelper.sendText(el, value);
   }
 }
 

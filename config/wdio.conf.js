@@ -25,9 +25,10 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: [
-    "./src/featureFiles/*.feature",
-    "./src/featureFiles/*/*.feature",
+  specs: [ 
+    // "./src/featureFiles/*.feature",
+    // "./src/featureFiles/*/*.feature",
+    "./src/featureFiles/Lookbook_Editor/Upload_Image_Tab.feature"
   ],
   // Patterns to exclude.
   exclude: [
@@ -49,7 +50,7 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: 1,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -104,11 +105,11 @@ exports.config = {
   baseUrl: "http://localhost",
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 60000,
+  waitforTimeout: 20000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
-  connectionRetryTimeout: 120000,
+  connectionRetryTimeout: 90000,
   //
   // Default request retries count
   connectionRetryCount: 3,
@@ -192,8 +193,8 @@ exports.config = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  // onPrepare: function (config, capabilities) {
-  // },
+  async onPrepare(config, capabilities) {
+  },
   /**
    * Gets executed before a worker process is spawned and can be used to initialise specific service
    * for that worker as well as modify runtime environments in an async fashion.

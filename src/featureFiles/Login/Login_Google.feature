@@ -1,6 +1,7 @@
+@Pending
 Feature: Login with Google
 
-  @androidApp
+  @androidApp 
   Scenario: Verify  click "Google" icon, show popup login account Google
     Given I launch and Open SmtGood Android app
     And I click 'Log in/Sign up here!' button

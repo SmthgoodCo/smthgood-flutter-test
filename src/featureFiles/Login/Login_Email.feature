@@ -3,14 +3,17 @@ Feature: Login with Email
   @androidApp
   Scenario: Lauch and Open SmtGood Android app
     Given I launch and Open SmtGood Android app
-    Then I can see the text is 'smthgood!'
+    Then I can see the title is 'STYLISH, CONSCIOUS FASHION'
 
   @androidApp
   Scenario: Verify input invalid email
-    Given I click 'Log in/Sign up here!' button
+    Given I click on the image with index 5
+    When I click 'Sign up here!' button
+    When I click 'Log in/Sign up here!' button
+    And I skip the privacy popup
     When I enter 'Test1'
     And I click 'CONTINUE' button
-    Then I can see the text is 'Email invalid, please type your email address'
+    Then I can see the text is 'Email is invalid.'
 
   @androidApp
   Scenario: Verify not enter email
@@ -28,7 +31,7 @@ Feature: Login with Email
   Scenario: Verify does not enter value, show message
     Given I enter ''
     When I click 'SIGN IN' button
-    Then I can see the text is 'Please enter your password'
+    Then I can see the text is 'At least 8 characters and no spaces'
 
   @androidApp
   Scenario: Verify enter data less than 8 characters, show message
@@ -88,4 +91,4 @@ Feature: Login with Email
     Given I enter 'Abcd123!@#'
     Then I can see '**********' in text field
     When I click 'SIGN IN' button
-    Then I can see 'JUST FOR YOU' section on homepage
+    Then I can see 'STYLISH, CONSCIOUS FASHION' section on homepage

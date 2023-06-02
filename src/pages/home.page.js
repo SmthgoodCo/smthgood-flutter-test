@@ -9,7 +9,8 @@ class HomePage extends BasePage {
     return require(`./../screens/native/${platform}/home.screen.js`)
   }
 
-  nextGuideBtn = async (text, i) => `//android.view.View[contains(@content-desc, "${text}")]/following-sibling::android.widget.ImageView[@index="${i}"]`
+  nextGuideBtn = async (i, index) => `(//android.widget.ImageView[@index="${i}"])[${index}]`
+  menuBottom = async (i) => `//android.widget.ImageView[@index="${i}"]`
 
   async launchApp() {
     await ActionHelper.launchApp()
@@ -52,8 +53,14 @@ class HomePage extends BasePage {
       (await ActionHelper.isVisible(el)).should.true;
   }
 
-  async clickNextGuide(text, i) {
-    const el = await this.nextGuideBtn(text, i)
+  async clickNextGuide(i, index) {
+    const el = await this.nextGuideBtn(i, index)
+    await ActionHelper.waitForElement(el)
+    await ActionHelper.click(el)
+  }
+
+  async clickMenuBottom() {
+    const el = await this.menuBottom(i)
     await ActionHelper.waitForElement(el)
     await ActionHelper.click(el)
   }
